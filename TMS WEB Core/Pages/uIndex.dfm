@@ -747,7 +747,7 @@ object frmHome: TfrmHome
           Align = alTop
           ChildOrder = 2
           OnLoaded = imgLogoLoaded
-          URL = 'images/logo.svg'
+          URL = 'assets/logo.svg'
         end
         object lblJobTitles: TWebLabel
           AlignWithMargins = True
