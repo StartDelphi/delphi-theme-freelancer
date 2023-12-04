@@ -6,6 +6,8 @@
 
 [![Freelancer Preview](https://github.com/StartDelphi/startdelphi-theme-freelancer/assets/5418178/0076d475-1c24-44eb-9905-e2dbebda18c4)](https://freelancer.startdelphi.com/)
 
+_Note: This Theme is still in active development and not fully complete_
+
 **[View Live Preview](https://freelancer.startdelphi.com/)**
 
 
