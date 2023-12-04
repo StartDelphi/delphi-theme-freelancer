@@ -10,6 +10,18 @@ _Note: This Theme is still in active development and not fully complete_
 
 **[View Live Preview](https://freelancer.startdelphi.com/)**
 
+## Platform Support
+
+| Platform      | Availability            | Minimum Version            |
+| ------------- | ----------------------- | -------------------------- |
+| TMS WEB Core  | Available               | Embarcadero Delphi 11.3 <br> TMS WEB CORE v2.4   |
+| FireMonkey    | *Coming soon!*          | N/A                        |
+| VCL           | *Coming soon!*          | N/A                        |
+| Lazarus       | *Coming soon!*          | N/A                        |
+
+
+
+
 
 ## Bugs and Issues
 
