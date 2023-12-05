@@ -76,17 +76,22 @@ begin
 end;
 
 procedure TFrame_Contact.WebFrameResize(Sender: TObject);
+var
+  iParentWidth: UInt64;
 begin
   if (Self.Width >= ContainerWidth) then
   begin
-    layContentContact.Margins.Left := (layContentContact.Parent.Width - ContainerWidth) div 2;
-    layContentContact.Margins.Right := (layContentContact.Parent.Width - ContainerWidth) div 2;
+    iParentWidth := layContentContact.Parent.Width;
+    if (iParentWidth < ContainerWidth) then iParentWidth := Self.Width;
+    console.log(iParentWidth);
+
+    layContentContact.Margins.Left := (iParentWidth - ContainerWidth) div 2;
+    layContentContact.Margins.Right := (iParentWidth - ContainerWidth) div 2;
   end else
   begin
     layContentContact.Margins.Left := 40;
     layContentContact.Margins.Right := 40;
   end;
-
 end;
 
 procedure TFrame_Contact.btnSendClick(Sender: TObject);
@@ -108,6 +113,8 @@ begin
 
   btnSend.ElementHandle.style.setProperty('border-radius','10px');
   btnSend.ElementHandle.style.setProperty('border','1px solid #1ABC9C');
+
+  WebFrameResize(Frame_Contact);
 end;
 
 end.

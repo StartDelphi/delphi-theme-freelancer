@@ -13,10 +13,6 @@ object frmHome: TfrmHome
     BorderStyle = bsNone
     ChildOrder = 2
     ShowCaption = False
-    ExplicitLeft = 688
-    ExplicitTop = 1968
-    ExplicitWidth = 150
-    ExplicitHeight = 60
     object layContent: TWebScrollBox
       Left = 0
       Top = 83
@@ -36,7 +32,6 @@ object frmHome: TfrmHome
         BorderStyle = bsNone
         Color = 10271770
         ShowCaption = False
-        ExplicitTop = 1873
         object WebLabel2: TWebLabel
           AlignWithMargins = True
           Left = 0
@@ -276,7 +271,7 @@ object frmHome: TfrmHome
           Margins.Right = 40
           Margins.Bottom = 40
           Align = alBottom
-          Caption = 'Close Window'
+          Caption = 'Free Download'
           Color = 10271770
           ChildOrder = 3
           Font.Charset = DEFAULT_CHARSET
@@ -307,7 +302,6 @@ object frmHome: TfrmHome
         ChildOrder = 1
         Color = clWhite
         ShowCaption = False
-        ExplicitTop = 819
         object lblPortfolio: TWebLabel
           AlignWithMargins = True
           Left = 0
@@ -484,31 +478,70 @@ object frmHome: TfrmHome
             ChildOrder = 2
             Color = clWhite
             ShowCaption = False
-            object imgPortfolio1: TWebImageControl
+            object layPortfolioImage1: TWebPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 432
-              Height = 305
-              Cursor = crHandPoint
-              Hint = 'LOG CABIN'
+              Height = 304
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
               Margins.Bottom = 20
-              HeightStyle = ssAuto
-              HeightPercent = 100.000000000000000000
-              WidthPercent = 100.000000000000000000
-              Align = alTop
+              Align = alClient
               ChildOrder = 1
-              OnClick = PortfolioClick
-              OnMouseEnter = ThemeImageMouseEnter
-              OnMouseLeave = ThemeImageMouseLeave
-              OnLoaded = imgLogoLoaded
-              URL = 'assets/img/cabin.png'
-              ExplicitLeft = 0
-              ExplicitTop = -4
-              ExplicitWidth = 450
+              Color = 10271770
+              ExplicitTop = 40
+              object imgPortfolio1: TWebImageControl
+                Left = 0
+                Top = 0
+                Width = 432
+                Height = 305
+                Cursor = crHandPoint
+                Hint = 'LOG CABIN'
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                HeightStyle = ssAuto
+                HeightPercent = 100.000000000000000000
+                WidthPercent = 100.000000000000000000
+                Align = alTop
+                ChildOrder = 1
+                OnClick = PortfolioClick
+                OnMouseEnter = PortfolioImageMouseEnter
+                OnMouseLeave = PortfolioImageMouseLeave
+                OnMouseMove = PortfolioImageMouseMove
+                OnLoaded = imgLogoLoaded
+                URL = 'assets/img/cabin.png'
+                ExplicitTop = -1
+              end
+              object imgPortfolioIcon1: TWebHTMLContainer
+                AlignWithMargins = True
+                Left = 196
+                Top = 132
+                Width = 65
+                Height = 65
+                Cursor = crHandPoint
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                ChildOrder = 2
+                HTML.Strings = (
+                  
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
+                    '%" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">'
+                  
+                    '  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0' +
+                    ' 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 ' +
+                    '8 2"/>'
+                  '</svg>')
+                ScrollStyle = ssNone
+                Visible = False
+                OnClick = PortfolioClick
+                OnMouseMove = PortfolioImageMouseMove
+              end
             end
           end
           object layPortfolio2: TWebPanel
@@ -521,30 +554,72 @@ object frmHome: TfrmHome
             ChildOrder = 2
             Color = clWhite
             ShowCaption = False
-            object imgPortfolio2: TWebImageControl
+            object layPortfolioImage2: TWebPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 432
-              Height = 305
-              Cursor = crHandPoint
-              Hint = 'TASTY CAKE'
+              Height = 304
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
               Margins.Bottom = 20
-              HeightStyle = ssAuto
-              HeightPercent = 100.000000000000000000
-              WidthPercent = 100.000000000000000000
-              Align = alTop
+              Align = alClient
               ChildOrder = 1
-              OnClick = PortfolioClick
-              OnMouseEnter = ThemeImageMouseEnter
-              OnMouseLeave = ThemeImageMouseLeave
-              URL = 'assets/img/cake.png'
-              ExplicitLeft = 0
-              ExplicitTop = -4
-              ExplicitWidth = 450
+              Color = 10271770
+              ExplicitTop = 284
+              ExplicitHeight = 60
+              object imgPortfolio2: TWebImageControl
+                Left = 0
+                Top = 0
+                Width = 432
+                Height = 305
+                Cursor = crHandPoint
+                Hint = 'TASTY CAKE'
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                HeightStyle = ssAuto
+                HeightPercent = 100.000000000000000000
+                WidthPercent = 100.000000000000000000
+                Align = alTop
+                ChildOrder = 1
+                OnClick = PortfolioClick
+                OnMouseEnter = PortfolioImageMouseEnter
+                OnMouseLeave = PortfolioImageMouseLeave
+                OnMouseMove = PortfolioImageMouseMove
+                URL = 'assets/img/cake.png'
+                ExplicitLeft = 20
+                ExplicitTop = -1
+                ExplicitWidth = 392
+              end
+              object imgPortfolioIcon2: TWebHTMLContainer
+                AlignWithMargins = True
+                Left = 204
+                Top = 124
+                Width = 65
+                Height = 65
+                Cursor = crHandPoint
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                ChildOrder = 2
+                HTML.Strings = (
+                  
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
+                    '%" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">'
+                  
+                    '  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0' +
+                    ' 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 ' +
+                    '8 2"/>'
+                  '</svg>')
+                ScrollStyle = ssNone
+                Visible = False
+                OnClick = PortfolioClick
+                OnMouseMove = PortfolioImageMouseMove
+              end
             end
           end
           object layPortfolio3: TWebPanel
@@ -557,30 +632,71 @@ object frmHome: TfrmHome
             ChildOrder = 2
             Color = clWhite
             ShowCaption = False
-            object imgPortfolio3: TWebImageControl
+            object layPortfolioImage3: TWebPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 432
-              Height = 305
-              Cursor = crHandPoint
-              Hint = 'CIRCUS TENT'
+              Height = 304
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
               Margins.Bottom = 20
-              HeightStyle = ssAuto
-              HeightPercent = 100.000000000000000000
-              WidthPercent = 100.000000000000000000
-              Align = alTop
+              Align = alClient
               ChildOrder = 1
-              OnClick = PortfolioClick
-              OnMouseEnter = ThemeImageMouseEnter
-              OnMouseLeave = ThemeImageMouseLeave
-              URL = 'assets/img/circus.png'
-              ExplicitLeft = 0
-              ExplicitTop = -4
-              ExplicitWidth = 450
+              Color = 10271770
+              ExplicitTop = 40
+              object imgPortfolio3: TWebImageControl
+                Left = 0
+                Top = 0
+                Width = 432
+                Height = 305
+                Cursor = crHandPoint
+                Hint = 'CIRCUS TENT'
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                HeightStyle = ssAuto
+                HeightPercent = 100.000000000000000000
+                WidthPercent = 100.000000000000000000
+                Align = alTop
+                ChildOrder = 1
+                OnClick = PortfolioClick
+                OnMouseEnter = PortfolioImageMouseEnter
+                OnMouseLeave = PortfolioImageMouseLeave
+                OnMouseMove = PortfolioImageMouseMove
+                URL = 'assets/img/circus.png'
+                ExplicitLeft = 20
+                ExplicitTop = -1
+                ExplicitWidth = 392
+              end
+              object imgPortfolioIcon3: TWebHTMLContainer
+                AlignWithMargins = True
+                Left = 204
+                Top = 124
+                Width = 65
+                Height = 65
+                Cursor = crHandPoint
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                ChildOrder = 2
+                HTML.Strings = (
+                  
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
+                    '%" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">'
+                  
+                    '  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0' +
+                    ' 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 ' +
+                    '8 2"/>'
+                  '</svg>')
+                ScrollStyle = ssNone
+                Visible = False
+                OnClick = PortfolioClick
+                OnMouseMove = PortfolioImageMouseMove
+              end
             end
           end
           object layPortfolio4: TWebPanel
@@ -593,30 +709,71 @@ object frmHome: TfrmHome
             ChildOrder = 2
             Color = clWhite
             ShowCaption = False
-            object imgPortfolio4: TWebImageControl
+            object layPortfolioImage4: TWebPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 432
-              Height = 305
-              Cursor = crHandPoint
-              Hint = 'CONTROLLER'
+              Height = 304
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
               Margins.Bottom = 20
-              HeightStyle = ssAuto
-              HeightPercent = 100.000000000000000000
-              WidthPercent = 100.000000000000000000
-              Align = alTop
+              Align = alClient
               ChildOrder = 1
-              OnClick = PortfolioClick
-              OnMouseEnter = ThemeImageMouseEnter
-              OnMouseLeave = ThemeImageMouseLeave
-              URL = 'assets/img/game.png'
-              ExplicitLeft = 0
-              ExplicitTop = -4
-              ExplicitWidth = 450
+              Color = 10271770
+              ExplicitTop = 40
+              object imgPortfolio4: TWebImageControl
+                Left = 0
+                Top = 0
+                Width = 432
+                Height = 305
+                Cursor = crHandPoint
+                Hint = 'CONTROLLER'
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                HeightStyle = ssAuto
+                HeightPercent = 100.000000000000000000
+                WidthPercent = 100.000000000000000000
+                Align = alTop
+                ChildOrder = 1
+                OnClick = PortfolioClick
+                OnMouseEnter = PortfolioImageMouseEnter
+                OnMouseLeave = PortfolioImageMouseLeave
+                OnMouseMove = PortfolioImageMouseMove
+                URL = 'assets/img/game.png'
+                ExplicitLeft = 20
+                ExplicitTop = -1
+                ExplicitWidth = 392
+              end
+              object imgPortfolioIcon4: TWebHTMLContainer
+                AlignWithMargins = True
+                Left = 204
+                Top = 124
+                Width = 65
+                Height = 65
+                Cursor = crHandPoint
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                ChildOrder = 2
+                HTML.Strings = (
+                  
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
+                    '%" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">'
+                  
+                    '  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0' +
+                    ' 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 ' +
+                    '8 2"/>'
+                  '</svg>')
+                ScrollStyle = ssNone
+                Visible = False
+                OnClick = PortfolioClick
+                OnMouseMove = PortfolioImageMouseMove
+              end
             end
           end
           object layPortfolio5: TWebPanel
@@ -629,30 +786,71 @@ object frmHome: TfrmHome
             ChildOrder = 2
             Color = clWhite
             ShowCaption = False
-            object imgPortfolio5: TWebImageControl
+            object layPortfolioImage5: TWebPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 432
-              Height = 305
-              Cursor = crHandPoint
-              Hint = 'LOCKED SAFE'
+              Height = 304
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
               Margins.Bottom = 20
-              HeightStyle = ssAuto
-              HeightPercent = 100.000000000000000000
-              WidthPercent = 100.000000000000000000
-              Align = alTop
+              Align = alClient
               ChildOrder = 1
-              OnClick = PortfolioClick
-              OnMouseEnter = ThemeImageMouseEnter
-              OnMouseLeave = ThemeImageMouseLeave
-              URL = 'assets/img/safe.png'
-              ExplicitLeft = 0
-              ExplicitTop = -4
-              ExplicitWidth = 450
+              Color = 10271770
+              ExplicitTop = 40
+              object imgPortfolio5: TWebImageControl
+                Left = 0
+                Top = 0
+                Width = 432
+                Height = 305
+                Cursor = crHandPoint
+                Hint = 'LOCKED SAFE'
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                HeightStyle = ssAuto
+                HeightPercent = 100.000000000000000000
+                WidthPercent = 100.000000000000000000
+                Align = alTop
+                ChildOrder = 1
+                OnClick = PortfolioClick
+                OnMouseEnter = PortfolioImageMouseEnter
+                OnMouseLeave = PortfolioImageMouseLeave
+                OnMouseMove = PortfolioImageMouseMove
+                URL = 'assets/img/safe.png'
+                ExplicitLeft = 20
+                ExplicitTop = -1
+                ExplicitWidth = 392
+              end
+              object imgPortfolioIcon5: TWebHTMLContainer
+                AlignWithMargins = True
+                Left = 204
+                Top = 124
+                Width = 65
+                Height = 65
+                Cursor = crHandPoint
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                ChildOrder = 2
+                HTML.Strings = (
+                  
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
+                    '%" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">'
+                  
+                    '  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0' +
+                    ' 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 ' +
+                    '8 2"/>'
+                  '</svg>')
+                ScrollStyle = ssNone
+                Visible = False
+                OnClick = PortfolioClick
+                OnMouseMove = PortfolioImageMouseMove
+              end
             end
           end
           object layPortfolio6: TWebPanel
@@ -665,30 +863,71 @@ object frmHome: TfrmHome
             ChildOrder = 2
             Color = clWhite
             ShowCaption = False
-            object imgPortfolio6: TWebImageControl
+            object layPortfolioImage6: TWebPanel
               AlignWithMargins = True
               Left = 20
               Top = 20
               Width = 432
-              Height = 305
-              Cursor = crHandPoint
-              Hint = 'SUBMARINE'
+              Height = 304
               Margins.Left = 20
               Margins.Top = 20
               Margins.Right = 20
               Margins.Bottom = 20
-              HeightStyle = ssAuto
-              HeightPercent = 100.000000000000000000
-              WidthPercent = 100.000000000000000000
-              Align = alTop
+              Align = alClient
               ChildOrder = 1
-              OnClick = PortfolioClick
-              OnMouseEnter = ThemeImageMouseEnter
-              OnMouseLeave = ThemeImageMouseLeave
-              URL = 'assets/img/submarine.png'
-              ExplicitLeft = 0
-              ExplicitTop = -4
-              ExplicitWidth = 450
+              Color = 10271770
+              ExplicitTop = 40
+              object imgPortfolio6: TWebImageControl
+                Left = 0
+                Top = 0
+                Width = 432
+                Height = 305
+                Cursor = crHandPoint
+                Hint = 'SUBMARINE'
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                HeightStyle = ssAuto
+                HeightPercent = 100.000000000000000000
+                WidthPercent = 100.000000000000000000
+                Align = alTop
+                ChildOrder = 1
+                OnClick = PortfolioClick
+                OnMouseEnter = PortfolioImageMouseEnter
+                OnMouseLeave = PortfolioImageMouseLeave
+                OnMouseMove = PortfolioImageMouseMove
+                URL = 'assets/img/submarine.png'
+                ExplicitLeft = 20
+                ExplicitTop = -1
+                ExplicitWidth = 392
+              end
+              object imgPortfolioIcon6: TWebHTMLContainer
+                AlignWithMargins = True
+                Left = 204
+                Top = 124
+                Width = 65
+                Height = 65
+                Cursor = crHandPoint
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                ChildOrder = 2
+                HTML.Strings = (
+                  
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
+                    '%" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">'
+                  
+                    '  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0' +
+                    ' 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 ' +
+                    '8 2"/>'
+                  '</svg>')
+                ScrollStyle = ssNone
+                Visible = False
+                OnClick = PortfolioClick
+                OnMouseMove = PortfolioImageMouseMove
+              end
             end
           end
         end
@@ -728,7 +967,6 @@ object frmHome: TfrmHome
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitTop = 410
           ExplicitWidth = 412
         end
         object imgLogo: TWebImageControl
@@ -773,7 +1011,6 @@ object frmHome: TfrmHome
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitTop = 572
           ExplicitWidth = 474
         end
         object CustomHr1Container: TWebPanel
@@ -786,7 +1023,6 @@ object frmHome: TfrmHome
           ChildOrder = 3
           Color = 10271770
           ShowCaption = False
-          ExplicitTop = 512
           object CustomHr1: TWebPanel
             Left = 549
             Top = 0
@@ -866,7 +1102,7 @@ object frmHome: TfrmHome
         ParentBackground = False
         ParentColor = False
         TabOrder = 3
-        ExplicitTop = 3256
+        ExplicitTop = 3168
         ExplicitWidth = 1521
         inherited layContentContainerFooter: TWebPanel
           Width = 1521
@@ -929,9 +1165,6 @@ object frmHome: TfrmHome
                       '-8-8"/>'
                     '</svg>')
                 end
-                inherited FooterLinkTwitter: TWebHTMLContainer
-                  ExplicitLeft = 113
-                end
               end
             end
             inherited WebPanel1: TWebPanel
@@ -971,7 +1204,6 @@ object frmHome: TfrmHome
         ChildOrder = 7
         Color = clWhite
         ShowCaption = False
-        ExplicitTop = 2449
         object WebLabel4: TWebLabel
           AlignWithMargins = True
           Left = 0
@@ -1184,7 +1416,6 @@ object frmHome: TfrmHome
       Height = 83
       Align = alTop
       TabOrder = 1
-      ExplicitTop = 8
       ExplicitWidth = 1521
       inherited layHeader: TWebPanel
         Width = 1521

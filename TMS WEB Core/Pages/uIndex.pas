@@ -61,17 +61,12 @@ type
     btnFreeDownload: TWebButton;
     Frame_Footer1: TFrame_Footer;
     layPortfolio1: TWebPanel;
-    imgPortfolio1: TWebImageControl;
     layPortfolio2: TWebPanel;
     imgPortfolio2: TWebImageControl;
     layPortfolio3: TWebPanel;
-    imgPortfolio3: TWebImageControl;
     layPortfolio4: TWebPanel;
-    imgPortfolio4: TWebImageControl;
     layPortfolio5: TWebPanel;
-    imgPortfolio5: TWebImageControl;
     layPortfolio6: TWebPanel;
-    imgPortfolio6: TWebImageControl;
     layContentContact: TWebPanel;
     CustomHr4Container: TWebPanel;
     CustomHr4: TWebPanel;
@@ -82,19 +77,37 @@ type
     Frame_Contact: TFrame_Contact;
     layContainer: TWebPanel;
     Frame_Header: TFrame_Header;
+    layPortfolioImage2: TWebPanel;
+    layPortfolioImage1: TWebPanel;
+    imgPortfolio1: TWebImageControl;
+    imgPortfolioIcon1: TWebHTMLContainer;
+    imgPortfolioIcon2: TWebHTMLContainer;
+    layPortfolioImage3: TWebPanel;
+    imgPortfolioIcon3: TWebHTMLContainer;
+    layPortfolioImage4: TWebPanel;
+    imgPortfolioIcon4: TWebHTMLContainer;
+    layPortfolioImage5: TWebPanel;
+    imgPortfolioIcon5: TWebHTMLContainer;
+    layPortfolioImage6: TWebPanel;
+    imgPortfolioIcon6: TWebHTMLContainer;
+    imgPortfolio3: TWebImageControl;
+    imgPortfolio4: TWebImageControl;
+    imgPortfolio5: TWebImageControl;
+    imgPortfolio6: TWebImageControl;
     procedure WebFormCreate(Sender: TObject);
     procedure WebFormResize(Sender: TObject);
     procedure FilterButtonsMouseEnter(Sender: TObject);
     procedure FilterButtonsMouseLeave(Sender: TObject);
     procedure FilterButtonsClick(Sender: TObject);
-    procedure ThemeImageMouseEnter(Sender: TObject);
-    procedure ThemeImageMouseLeave(Sender: TObject);
+    procedure PortfolioImageMouseEnter(Sender: TObject);
+    procedure PortfolioImageMouseLeave(Sender: TObject);
     procedure ButtonMouseEnter(Sender: TObject);
     procedure ButtonMouseLeave(Sender: TObject);
     procedure imgLogoLoaded(Sender: TObject);
     procedure PortfolioClick(Sender: TObject);
     procedure btnFreeDownloadMouseEnter(Sender: TObject);
     procedure btnFreeDownloadMouseLeave(Sender: TObject);
+    procedure PortfolioImageMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     procedure RenderLabelCaptionsHTML();
@@ -162,6 +175,7 @@ end;
 procedure TfrmHome.PortfolioClick(Sender: TObject);
 var
   MyPopUp: TTemplate_PopUp;
+  Image: TWebImageControl;
 begin
   MyPopUp := TTemplate_PopUp.Create(Self);
   MyPopUp.ElementID := 'Template_PopUp';
@@ -169,10 +183,16 @@ begin
   MyPopUp.Align := alClient;
   MyPopUp.LoadFromForm;
 
+  if (Sender is TWebImageControl) then
+    Image := TWebImageControl(Sender)
+  else
+    Image := TWebImageControl(FindComponent(String(TWebHTMLContainer(Sender).Name).replace('Icon','',[])));
+
+
   MyPopUp.SetContent(
-    TWebImageControl(Sender).Hint,
+    Image.Hint,
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.',
-    TWebImageControl(Sender).URL
+    Image.URL
   );
 
   MyPopUp.StyleControls;
@@ -185,14 +205,40 @@ begin
 //  TJSHTMLElement(lblContentDescriptionIntro.ElementHandle.firstChild).innerHTML := lblContentDescriptionIntro.Caption;
 end;
 
-procedure TfrmHome.ThemeImageMouseEnter(Sender: TObject);
+procedure TfrmHome.PortfolioImageMouseEnter(Sender: TObject);
+var
+  Icon: TWebHTMLContainer;
+  Image: TWebImageControl;
 begin
-//  TWebImageControl(Sender).ElementHandle.style.setProperty('transform','translateY(-0.333333rem)');
+  if (Sender is TWebImageControl) then
+  begin
+    Image := TWebImageControl(Sender);
+    Icon := TWebHTMLContainer(FindComponent(String(TWebImageControl(Sender).Name).replace('imgPortfolio','imgPortfolioIcon',[])));
+  end else
+  begin
+    Icon := TWebHTMLContainer(Sender);
+    Image := TWebImageControl(FindComponent(String(TWebHTMLContainer(Sender).Name).replace('Icon','',[])));
+  end;
+
+  if Assigned(Icon) then Icon.Visible := True;
+  if Assigned(Image) then Image.ElementHandle.style.setProperty('opacity','0.15');
 end;
 
-procedure TfrmHome.ThemeImageMouseLeave(Sender: TObject);
+procedure TfrmHome.PortfolioImageMouseLeave(Sender: TObject);
+var
+  Icon: TWebHTMLContainer;
+  Image: TWebImageControl;
 begin
-//  TWebImageControl(Sender).ElementHandle.style.removeProperty('transform');
+  Image := TWebImageControl(Sender);
+  Icon := TWebHTMLContainer(FindComponent(String(TWebImageControl(Sender).Name).replace('imgPortfolio','imgPortfolioIcon',[])));
+
+  if Assigned(Icon) then Icon.Visible := False;
+  if Assigned(Image) then Image.ElementHandle.style.removeProperty('opacity');
+end;
+
+procedure TfrmHome.PortfolioImageMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+  PortfolioImageMouseEnter(Sender);
 end;
 
 procedure TfrmHome.WebFormCreate(Sender: TObject);
@@ -205,18 +251,18 @@ begin
   Frame_Footer.StyleControls;
 
   // Portfolio
-  imgPortfolio1.ElementHandle.style.setProperty('border','1px solid #b21f24');
-  imgPortfolio1.ElementHandle.style.setProperty('border-radius','10px');
-  imgPortfolio2.ElementHandle.style.setProperty('border','1px solid #b21f24');
-  imgPortfolio2.ElementHandle.style.setProperty('border-radius','10px');
-  imgPortfolio3.ElementHandle.style.setProperty('border','1px solid #b21f24');
-  imgPortfolio3.ElementHandle.style.setProperty('border-radius','10px');
-  imgPortfolio4.ElementHandle.style.setProperty('border','1px solid #b21f24');
-  imgPortfolio4.ElementHandle.style.setProperty('border-radius','10px');
-  imgPortfolio5.ElementHandle.style.setProperty('border','1px solid #b21f24');
-  imgPortfolio5.ElementHandle.style.setProperty('border-radius','10px');
-  imgPortfolio6.ElementHandle.style.setProperty('border','1px solid #b21f24');
-  imgPortfolio6.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage1.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage1.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage2.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage2.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage3.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage3.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage4.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage4.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage5.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage5.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage6.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage6.ElementHandle.style.setProperty('border-radius','10px');
 
   // About
   btnFreeDownload.ElementHandle.style.setProperty('border-radius','10px');
@@ -257,7 +303,7 @@ begin
 //                                     lblContentDescriptionIntro.Height + lblContentDescriptionIntro.Margins.Top + lblContentDescriptionIntro.Margins.Bottom +
 //                                     layBrowseTemplatesAndThemes.Height + layBrowseTemplatesAndThemes.Margins.Top + layBrowseTemplatesAndThemes.Margins.Bottom;
 
-  layPortfolio.Height := (imgPortfolio1.Height + imgPortfolio1.Margins.Top + imgPortfolio1.Margins.Bottom) * 2;
+  layPortfolio.Height := (imgPortfolio1.Height + layPortfolioImage1.Margins.Top + layPortfolioImage1.Margins.Bottom) * 2;
 
   layContentContainerPortfolio.Height := lblPortfolio.Height + lblPortfolio.Margins.Top + lblPortfolio.Margins.Bottom +
                                          CustomHr2Container.Height + CustomHr2Container.Margins.Top + CustomHr2Container.Margins.Bottom +
@@ -272,6 +318,19 @@ begin
 
   btnFreeDownload.Margins.Left := (imgLogo.Parent.Width - 200) div 2;
   btnFreeDownload.Margins.Right := (imgLogo.Parent.Width - 200) div 2;
+
+  imgPortfolioIcon1.Left := (imgPortfolioIcon1.Parent.Width - imgPortfolioIcon1.Width) div 2;
+  imgPortfolioIcon1.Top := (imgPortfolioIcon1.Parent.Height - imgPortfolioIcon1.Height) div 2;
+  imgPortfolioIcon2.Left := (imgPortfolioIcon2.Parent.Width - imgPortfolioIcon2.Width) div 2;
+  imgPortfolioIcon2.Top := (imgPortfolioIcon2.Parent.Height - imgPortfolioIcon2.Height) div 2;
+  imgPortfolioIcon3.Left := (imgPortfolioIcon3.Parent.Width - imgPortfolioIcon3.Width) div 2;
+  imgPortfolioIcon3.Top := (imgPortfolioIcon3.Parent.Height - imgPortfolioIcon3.Height) div 2;
+  imgPortfolioIcon4.Left := (imgPortfolioIcon4.Parent.Width - imgPortfolioIcon4.Width) div 2;
+  imgPortfolioIcon4.Top := (imgPortfolioIcon4.Parent.Height - imgPortfolioIcon4.Height) div 2;
+  imgPortfolioIcon5.Left := (imgPortfolioIcon5.Parent.Width - imgPortfolioIcon5.Width) div 2;
+  imgPortfolioIcon5.Top := (imgPortfolioIcon5.Parent.Height - imgPortfolioIcon5.Height) div 2;
+  imgPortfolioIcon6.Left := (imgPortfolioIcon6.Parent.Width - imgPortfolioIcon6.Width) div 2;
+  imgPortfolioIcon6.Top := (imgPortfolioIcon6.Parent.Height - imgPortfolioIcon6.Height) div 2;
 
 
 
