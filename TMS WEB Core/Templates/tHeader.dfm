@@ -1,24 +1,26 @@
 object Frame_Header: TFrame_Header
   Left = 0
   Top = 0
-  Width = 1331
-  Height = 459
+  Width = 846
+  Height = 292
   TabOrder = 0
   OnResize = WebFrameResize
   object layHeaderContainer: TWebPanel
     Left = 0
     Top = 0
-    Width = 1331
-    Height = 459
+    Width = 846
+    Height = 292
     Align = alClient
     BorderStyle = bsNone
     ChildOrder = 1
     Color = 5258796
     ShowCaption = False
+    ExplicitWidth = 1331
+    ExplicitHeight = 459
     object layHeader: TWebPanel
       Left = 0
       Top = 0
-      Width = 1331
+      Width = 846
       Height = 83
       Align = alTop
       BorderStyle = bsNone
@@ -69,7 +71,7 @@ object Frame_Header: TFrame_Header
       end
       object lblLinkContact: TWebLabel
         AlignWithMargins = True
-        Left = 1080
+        Left = 595
         Top = 20
         Width = 82
         Height = 43
@@ -97,7 +99,7 @@ object Frame_Header: TFrame_Header
       end
       object lblLinkPortfolio: TWebLabel
         AlignWithMargins = True
-        Left = 884
+        Left = 399
         Top = 20
         Width = 96
         Height = 43
@@ -125,7 +127,7 @@ object Frame_Header: TFrame_Header
       end
       object lblLinkAbout: TWebLabel
         AlignWithMargins = True
-        Left = 1000
+        Left = 515
         Top = 20
         Width = 60
         Height = 43
@@ -152,7 +154,7 @@ object Frame_Header: TFrame_Header
         ExplicitHeight = 25
       end
       object btnMenu: TWebButton
-        Left = 1182
+        Left = 697
         Top = 20
         Width = 129
         Height = 43
@@ -182,7 +184,7 @@ object Frame_Header: TFrame_Header
     object layMobileLinkPortfolio: TWebPanel
       Left = 0
       Top = 83
-      Width = 1331
+      Width = 846
       Height = 60
       Align = alTop
       BorderStyle = bsNone
@@ -227,7 +229,7 @@ object Frame_Header: TFrame_Header
     object layMobileLinkContact: TWebPanel
       Left = 0
       Top = 203
-      Width = 1331
+      Width = 846
       Height = 60
       Align = alTop
       BorderStyle = bsNone
@@ -272,7 +274,7 @@ object Frame_Header: TFrame_Header
     object layMobileLinkAbout: TWebPanel
       Left = 0
       Top = 143
-      Width = 1331
+      Width = 846
       Height = 60
       Align = alTop
       BorderStyle = bsNone

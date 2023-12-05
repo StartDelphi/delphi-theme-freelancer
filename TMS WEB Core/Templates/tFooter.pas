@@ -114,11 +114,16 @@ begin
 end;
 
 procedure TFrame_Footer.WebFrameResize(Sender: TObject);
+var
+  iParentWidth: UInt64;
 begin
   if (Self.Width >= ContainerWidth) then
   begin
-    layContentFooter.Margins.Left := (layContentFooter.Parent.Width - ContainerWidth) div 2;
-    layContentFooter.Margins.Right := (layContentFooter.Parent.Width - ContainerWidth) div 2;
+    iParentWidth := layContentFooter.Parent.Width;
+    if (iParentWidth < ContainerWidth) then iParentWidth := Self.Width;
+
+    layContentFooter.Margins.Left := (iParentWidth - ContainerWidth) div 2;
+    layContentFooter.Margins.Right := (iParentWidth - ContainerWidth) div 2;
   end else
   begin
     layContentFooter.Margins.Left := 40;

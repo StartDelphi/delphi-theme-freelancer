@@ -22,6 +22,7 @@ object frmHome: TfrmHome
       BorderStyle = bsNone
       ChildOrder = 1
       Color = clWhite
+      ScrollBars = ssVertical
       object layContentContainerIntro: TWebPanel
         Left = 0
         Top = 1785
@@ -491,7 +492,6 @@ object frmHome: TfrmHome
               Align = alClient
               ChildOrder = 1
               Color = 10271770
-              ExplicitTop = 40
               object imgPortfolio1: TWebImageControl
                 Left = 0
                 Top = 0
@@ -564,8 +564,6 @@ object frmHome: TfrmHome
               Align = alClient
               ChildOrder = 1
               Color = 10271770
-              ExplicitTop = 284
-              ExplicitHeight = 60
               object imgPortfolio2: TWebImageControl
                 Left = 0
                 Top = 0
@@ -639,7 +637,6 @@ object frmHome: TfrmHome
               Align = alClient
               ChildOrder = 1
               Color = 10271770
-              ExplicitTop = 40
               object imgPortfolio3: TWebImageControl
                 Left = 0
                 Top = 0
@@ -713,7 +710,6 @@ object frmHome: TfrmHome
               Align = alClient
               ChildOrder = 1
               Color = 10271770
-              ExplicitTop = 40
               object imgPortfolio4: TWebImageControl
                 Left = 0
                 Top = 0
@@ -787,7 +783,6 @@ object frmHome: TfrmHome
               Align = alClient
               ChildOrder = 1
               Color = 10271770
-              ExplicitTop = 40
               object imgPortfolio5: TWebImageControl
                 Left = 0
                 Top = 0
@@ -861,7 +856,6 @@ object frmHome: TfrmHome
               Align = alClient
               ChildOrder = 1
               Color = 10271770
-              ExplicitTop = 40
               object imgPortfolio6: TWebImageControl
                 Left = 0
                 Top = 0
@@ -928,7 +922,7 @@ object frmHome: TfrmHome
         object lblSiteName: TWebLabel
           AlignWithMargins = True
           Left = 0
-          Top = 380
+          Top = 395
           Width = 1521
           Height = 82
           Margins.Left = 0
@@ -949,6 +943,7 @@ object frmHome: TfrmHome
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
+          ExplicitTop = 380
           ExplicitWidth = 412
         end
         object imgLogo: TWebImageControl
@@ -956,7 +951,7 @@ object frmHome: TfrmHome
           Left = 0
           Top = 70
           Width = 1521
-          Height = 270
+          Height = 285
           Margins.Left = 0
           Margins.Top = 70
           Margins.Right = 0
@@ -972,13 +967,13 @@ object frmHome: TfrmHome
         object lblJobTitles: TWebLabel
           AlignWithMargins = True
           Left = 0
-          Top = 542
+          Top = 557
           Width = 1521
           Height = 36
           Margins.Left = 0
           Margins.Top = 20
           Margins.Right = 0
-          Margins.Bottom = 95
+          Margins.Bottom = 90
           Align = alTop
           Alignment = taCenter
           Caption = 'Graphic Artist - Web Designer - Illustrator'
@@ -993,11 +988,12 @@ object frmHome: TfrmHome
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
+          ExplicitTop = 542
           ExplicitWidth = 474
         end
         object CustomHr1Container: TWebPanel
           Left = 0
-          Top = 482
+          Top = 497
           Width = 1521
           Height = 40
           Align = alTop
@@ -1005,6 +1001,7 @@ object frmHome: TfrmHome
           ChildOrder = 3
           Color = 10271770
           ShowCaption = False
+          ExplicitTop = 482
           object CustomHr1: TWebPanel
             Left = 549
             Top = 0
@@ -1399,23 +1396,40 @@ object frmHome: TfrmHome
       Align = alTop
       TabOrder = 1
       ExplicitWidth = 1521
-      inherited layHeader: TWebPanel
+      ExplicitHeight = 83
+      inherited layHeaderContainer: TWebPanel
         Width = 1521
-        ExplicitWidth = 1521
-        inherited imgLogo: TWebImageControl
-          ExplicitLeft = 17
+        Height = 83
+        inherited layHeader: TWebPanel
+          Width = 1521
+          ExplicitWidth = 1481
+          inherited imgLogo: TWebImageControl
+            ExplicitLeft = 17
+          end
+          inherited lblLinkContact: TWebLabel
+            Left = 1399
+            ExplicitLeft = 1399
+          end
+          inherited lblLinkPortfolio: TWebLabel
+            Left = 1203
+            ExplicitLeft = 1203
+          end
+          inherited lblLinkAbout: TWebLabel
+            Left = 1319
+            ExplicitLeft = 1319
+          end
+          inherited btnMenu: TWebButton
+            Left = 1074
+          end
         end
-        inherited lblLinkContact: TWebLabel
-          Left = 1399
-          ExplicitLeft = 1399
+        inherited layMobileLinkPortfolio: TWebPanel
+          Width = 1521
         end
-        inherited lblLinkPortfolio: TWebLabel
-          Left = 1203
-          ExplicitLeft = 1203
+        inherited layMobileLinkContact: TWebPanel
+          Width = 1521
         end
-        inherited lblLinkAbout: TWebLabel
-          Left = 1319
-          ExplicitLeft = 1319
+        inherited layMobileLinkAbout: TWebPanel
+          Width = 1521
         end
       end
     end

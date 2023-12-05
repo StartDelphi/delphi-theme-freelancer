@@ -132,7 +132,7 @@ end;
 
 procedure TFrame_Header.WebFrameResize(Sender: TObject);
 begin
-  if (layHeader.Width >= 600) then
+  if (Self.Width >= 600) then
   begin
     Self.Height := layHeader.Height;
     btnMenu.Visible := False;

@@ -275,8 +275,8 @@ end;
 
 procedure TfrmHome.WebFormResize(Sender: TObject);
 begin
-  imgLogo.Margins.Left := (imgLogo.Parent.Width - 300) div 2;
-  imgLogo.Margins.Right := (imgLogo.Parent.Width - 300) div 2;
+  imgLogo.Margins.Left := (imgLogo.Parent.Width - 285) div 2;
+  imgLogo.Margins.Right := (imgLogo.Parent.Width - 285) div 2;
 
   if (frmHome.Width >= ContainerWidth) then
   begin
