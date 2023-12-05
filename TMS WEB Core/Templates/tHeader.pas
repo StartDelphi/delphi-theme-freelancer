@@ -23,18 +23,30 @@ uses
 
 type
   TFrame_Header = class(TWebFrame)
+    layHeaderContainer: TWebPanel;
     layHeader: TWebPanel;
     imgLogo: TWebImageControl;
     lblSiteName: TWebLabel;
     lblLinkContact: TWebLabel;
     lblLinkPortfolio: TWebLabel;
     lblLinkAbout: TWebLabel;
-    procedure ButtonMouseEnter(Sender: TObject);
-    procedure ButtonMouseLeave(Sender: TObject);
+    btnMenu: TWebButton;
+    layMobileLinkPortfolio: TWebPanel;
+    WebLabel1: TWebLabel;
+    layMobileLinkContact: TWebPanel;
+    WebLabel3: TWebLabel;
+    layMobileLinkAbout: TWebPanel;
+    WebLabel2: TWebLabel;
+    procedure LinkMouseEnter(Sender: TObject);
+    procedure LinkMouseLeave(Sender: TObject);
     procedure LogoSiteNameClick(Sender: TObject);
     procedure lblLinkPortfolioClick(Sender: TObject);
     procedure lblLinkAboutClick(Sender: TObject);
     procedure lblLinkContactClick(Sender: TObject);
+    procedure WebFrameResize(Sender: TObject);
+    procedure ButtonMouseEnter(Sender: TObject);
+    procedure ButtonMouseLeave(Sender: TObject);
+    procedure btnMenuClick(Sender: TObject);
   private
     { Private declarations }
     procedure LoadConfig();
@@ -52,14 +64,32 @@ implementation
 
 { TFrame_Header }
 
-procedure TFrame_Header.ButtonMouseEnter(Sender: TObject);
+procedure TFrame_Header.LinkMouseEnter(Sender: TObject);
 begin
   TWebLabel(Sender).Font.Color := $009CBC1A;
 end;
 
-procedure TFrame_Header.ButtonMouseLeave(Sender: TObject);
+procedure TFrame_Header.LinkMouseLeave(Sender: TObject);
 begin
   TWebLabel(Sender).Font.Color := clWhite;
+end;
+
+procedure TFrame_Header.btnMenuClick(Sender: TObject);
+begin
+  if (Self.Height = layHeader.Height) then
+    Self.Height := layHeader.Height + layMobileLinkPortfolio.Height + layMobileLinkAbout.Height + layMobileLinkContact.Height
+  else
+    Self.Height := layHeader.Height;
+end;
+
+procedure TFrame_Header.ButtonMouseEnter(Sender: TObject);
+begin
+  TWebButton(Sender).Color := $0085A016;
+end;
+
+procedure TFrame_Header.ButtonMouseLeave(Sender: TObject);
+begin
+  TWebButton(Sender).Color := $009CBC1A;
 end;
 
 procedure TFrame_Header.lblLinkAboutClick(Sender: TObject);
@@ -96,8 +126,26 @@ procedure TFrame_Header.StyleControls; // Call from the Form's Create Event
 begin
   LoadConfig;
 
-//  btnLogin.ElementHandle.style.setProperty('border-radius','10px');
-//  btnLogin.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  btnMenu.ElementHandle.style.setProperty('border-radius','10px');
+  btnMenu.ElementHandle.style.setProperty('border','1px solid #b21f24');
+end;
+
+procedure TFrame_Header.WebFrameResize(Sender: TObject);
+begin
+  if (layHeader.Width >= 600) then
+  begin
+    Self.Height := layHeader.Height;
+    btnMenu.Visible := False;
+    lblLinkPortfolio.Visible := True;
+    lblLinkAbout.Visible := True;
+    lblLinkContact.Visible := True;
+  end else
+  begin
+    btnMenu.Visible := True;
+    lblLinkPortfolio.Visible := False;
+    lblLinkAbout.Visible := False;
+    lblLinkContact.Visible := False;
+  end;
 end;
 
 end.
