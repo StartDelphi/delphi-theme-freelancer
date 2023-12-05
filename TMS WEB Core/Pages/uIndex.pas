@@ -187,8 +187,6 @@ begin
   else
     Image := TWebImageControl(FindComponent(String(TWebHTMLContainer(Sender).Name).replace('Icon','',[])));
 
-  console.log(Image);
-
   MyPopUp.SetContent(
     Image.Hint,
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.',
@@ -246,17 +244,17 @@ begin
   Frame_Footer.StyleControls;
 
   // Portfolio
-  layPortfolioImage1.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage1.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage1.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage2.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage2.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage2.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage3.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage3.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage3.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage4.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage4.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage4.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage5.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage5.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage5.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage6.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  layPortfolioImage6.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage6.ElementHandle.style.setProperty('border-radius','10px');
   imgPortfolioIcon1.ElementHandle.style.setProperty('pointer-events','none');
   imgPortfolioIcon2.ElementHandle.style.setProperty('pointer-events','none');
