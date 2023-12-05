@@ -107,7 +107,6 @@ type
     procedure PortfolioClick(Sender: TObject);
     procedure btnFreeDownloadMouseEnter(Sender: TObject);
     procedure btnFreeDownloadMouseLeave(Sender: TObject);
-    procedure PortfolioImageMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     procedure RenderLabelCaptionsHTML();
@@ -188,6 +187,7 @@ begin
   else
     Image := TWebImageControl(FindComponent(String(TWebHTMLContainer(Sender).Name).replace('Icon','',[])));
 
+  console.log(Image);
 
   MyPopUp.SetContent(
     Image.Hint,
@@ -236,11 +236,6 @@ begin
   if Assigned(Image) then Image.ElementHandle.style.removeProperty('opacity');
 end;
 
-procedure TfrmHome.PortfolioImageMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-begin
-  PortfolioImageMouseEnter(Sender);
-end;
-
 procedure TfrmHome.WebFormCreate(Sender: TObject);
 begin
   document.title := AppDescription + ' - ' + AppName;
@@ -263,6 +258,12 @@ begin
   layPortfolioImage5.ElementHandle.style.setProperty('border-radius','10px');
   layPortfolioImage6.ElementHandle.style.setProperty('border','1px solid #b21f24');
   layPortfolioImage6.ElementHandle.style.setProperty('border-radius','10px');
+  imgPortfolioIcon1.ElementHandle.style.setProperty('pointer-events','none');
+  imgPortfolioIcon2.ElementHandle.style.setProperty('pointer-events','none');
+  imgPortfolioIcon3.ElementHandle.style.setProperty('pointer-events','none');
+  imgPortfolioIcon4.ElementHandle.style.setProperty('pointer-events','none');
+  imgPortfolioIcon5.ElementHandle.style.setProperty('pointer-events','none');
+  imgPortfolioIcon6.ElementHandle.style.setProperty('pointer-events','none');
 
   // About
   btnFreeDownload.ElementHandle.style.setProperty('border-radius','10px');

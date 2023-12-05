@@ -83,7 +83,6 @@ begin
   begin
     iParentWidth := layContentContact.Parent.Width;
     if (iParentWidth < ContainerWidth) then iParentWidth := Self.Width;
-    console.log(iParentWidth);
 
     layContentContact.Margins.Left := (iParentWidth - ContainerWidth) div 2;
     layContentContact.Margins.Right := (iParentWidth - ContainerWidth) div 2;

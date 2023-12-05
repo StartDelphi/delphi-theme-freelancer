@@ -511,7 +511,6 @@ object frmHome: TfrmHome
                 OnClick = PortfolioClick
                 OnMouseEnter = PortfolioImageMouseEnter
                 OnMouseLeave = PortfolioImageMouseLeave
-                OnMouseMove = PortfolioImageMouseMove
                 OnLoaded = imgLogoLoaded
                 URL = 'assets/img/cabin.png'
                 ExplicitTop = -1
@@ -539,8 +538,6 @@ object frmHome: TfrmHome
                   '</svg>')
                 ScrollStyle = ssNone
                 Visible = False
-                OnClick = PortfolioClick
-                OnMouseMove = PortfolioImageMouseMove
               end
             end
           end
@@ -588,7 +585,6 @@ object frmHome: TfrmHome
                 OnClick = PortfolioClick
                 OnMouseEnter = PortfolioImageMouseEnter
                 OnMouseLeave = PortfolioImageMouseLeave
-                OnMouseMove = PortfolioImageMouseMove
                 URL = 'assets/img/cake.png'
                 ExplicitLeft = 20
                 ExplicitTop = -1
@@ -617,8 +613,6 @@ object frmHome: TfrmHome
                   '</svg>')
                 ScrollStyle = ssNone
                 Visible = False
-                OnClick = PortfolioClick
-                OnMouseMove = PortfolioImageMouseMove
               end
             end
           end
@@ -665,7 +659,6 @@ object frmHome: TfrmHome
                 OnClick = PortfolioClick
                 OnMouseEnter = PortfolioImageMouseEnter
                 OnMouseLeave = PortfolioImageMouseLeave
-                OnMouseMove = PortfolioImageMouseMove
                 URL = 'assets/img/circus.png'
                 ExplicitLeft = 20
                 ExplicitTop = -1
@@ -694,8 +687,6 @@ object frmHome: TfrmHome
                   '</svg>')
                 ScrollStyle = ssNone
                 Visible = False
-                OnClick = PortfolioClick
-                OnMouseMove = PortfolioImageMouseMove
               end
             end
           end
@@ -742,7 +733,6 @@ object frmHome: TfrmHome
                 OnClick = PortfolioClick
                 OnMouseEnter = PortfolioImageMouseEnter
                 OnMouseLeave = PortfolioImageMouseLeave
-                OnMouseMove = PortfolioImageMouseMove
                 URL = 'assets/img/game.png'
                 ExplicitLeft = 20
                 ExplicitTop = -1
@@ -771,8 +761,6 @@ object frmHome: TfrmHome
                   '</svg>')
                 ScrollStyle = ssNone
                 Visible = False
-                OnClick = PortfolioClick
-                OnMouseMove = PortfolioImageMouseMove
               end
             end
           end
@@ -819,7 +807,6 @@ object frmHome: TfrmHome
                 OnClick = PortfolioClick
                 OnMouseEnter = PortfolioImageMouseEnter
                 OnMouseLeave = PortfolioImageMouseLeave
-                OnMouseMove = PortfolioImageMouseMove
                 URL = 'assets/img/safe.png'
                 ExplicitLeft = 20
                 ExplicitTop = -1
@@ -848,8 +835,6 @@ object frmHome: TfrmHome
                   '</svg>')
                 ScrollStyle = ssNone
                 Visible = False
-                OnClick = PortfolioClick
-                OnMouseMove = PortfolioImageMouseMove
               end
             end
           end
@@ -896,7 +881,6 @@ object frmHome: TfrmHome
                 OnClick = PortfolioClick
                 OnMouseEnter = PortfolioImageMouseEnter
                 OnMouseLeave = PortfolioImageMouseLeave
-                OnMouseMove = PortfolioImageMouseMove
                 URL = 'assets/img/submarine.png'
                 ExplicitLeft = 20
                 ExplicitTop = -1
@@ -925,8 +909,6 @@ object frmHome: TfrmHome
                   '</svg>')
                 ScrollStyle = ssNone
                 Visible = False
-                OnClick = PortfolioClick
-                OnMouseMove = PortfolioImageMouseMove
               end
             end
           end
@@ -1423,22 +1405,16 @@ object frmHome: TfrmHome
         inherited imgLogo: TWebImageControl
           ExplicitLeft = 17
         end
-        inherited lblSiteName: TWebLabel
-          Height = 43
-        end
         inherited lblLinkContact: TWebLabel
           Left = 1399
-          Height = 43
           ExplicitLeft = 1399
         end
         inherited lblLinkPortfolio: TWebLabel
           Left = 1203
-          Height = 43
           ExplicitLeft = 1203
         end
         inherited lblLinkAbout: TWebLabel
           Left = 1319
-          Height = 43
           ExplicitLeft = 1319
         end
       end

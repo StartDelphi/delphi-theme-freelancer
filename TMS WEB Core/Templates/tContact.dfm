@@ -216,6 +216,8 @@ object Frame_Contact: TFrame_Contact
           ParentFont = False
           WidthPercent = 100.000000000000000000
           OnClick = btnSendClick
+          OnMouseEnter = ButtonMouseEnter
+          OnMouseLeave = ButtonMouseLeave
         end
       end
     end
