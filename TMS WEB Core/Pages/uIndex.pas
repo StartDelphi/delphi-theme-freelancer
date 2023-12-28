@@ -125,12 +125,14 @@ procedure TfrmHome.btnFreeDownloadMouseEnter(Sender: TObject);
 begin
   TWebButton(Sender).Color := clWhite;
   TWebButton(Sender).Font.Color := clBlack;
+  TWebButton(Sender).ElementHandle.style.setProperty('border','2px solid white');
 end;
 
 procedure TfrmHome.btnFreeDownloadMouseLeave(Sender: TObject);
 begin
   TWebButton(Sender).Color := $009CBC1A;
   TWebButton(Sender).Font.Color := clWhite;
+  TWebButton(Sender).ElementHandle.style.setProperty('border','2px solid white');
 end;
 
 procedure TfrmHome.ButtonMouseEnter(Sender: TObject);
@@ -265,7 +267,7 @@ begin
 
   // About
   btnFreeDownload.ElementHandle.style.setProperty('border-radius','10px');
-  btnFreeDownload.ElementHandle.style.setProperty('border','1px solid white');
+  btnFreeDownload.ElementHandle.style.setProperty('border','2px solid white');
 
 
   RenderLabelCaptionsHTML;
@@ -275,6 +277,16 @@ procedure TfrmHome.WebFormResize(Sender: TObject);
 begin
   imgLogo.Margins.Left := (imgLogo.Parent.Width - 285) div 2;
   imgLogo.Margins.Right := (imgLogo.Parent.Width - 285) div 2;
+
+//  console.log('==========');
+//  console.log(layPortfolio.ColumnCollection.Count);
+//  console.log(layPortfolio.RowCollection.Count);
+//  layPortfolio.RowCollection.Clear;
+//  console.log('Row Clear');
+//  layPortfolio.ColumnCollection.Clear;
+//  console.log('Column Clear');
+//  console.log(layPortfolio.ColumnCollection.Count);
+//  console.log(layPortfolio.RowCollection.Count);
 
   if (frmHome.Width >= ContainerWidth) then
   begin
@@ -339,3 +351,4 @@ begin
 end;
 
 end.
+

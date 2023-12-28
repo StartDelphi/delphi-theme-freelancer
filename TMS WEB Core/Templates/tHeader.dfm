@@ -15,8 +15,6 @@ object Frame_Header: TFrame_Header
     ChildOrder = 1
     Color = 5258796
     ShowCaption = False
-    ExplicitWidth = 1331
-    ExplicitHeight = 459
     object layHeader: TWebPanel
       Left = 0
       Top = 0
@@ -30,9 +28,6 @@ object Frame_Header: TFrame_Header
       Padding.Right = 20
       Padding.Bottom = 20
       ShowCaption = False
-      ExplicitLeft = 20
-      ExplicitTop = 20
-      ExplicitWidth = 1291
       object imgLogo: TWebImageControl
         AlignWithMargins = True
         Left = 20
@@ -94,7 +89,6 @@ object Frame_Header: TFrame_Header
         OnClick = lblLinkContactClick
         OnMouseLeave = LinkMouseLeave
         OnMouseEnter = LinkMouseEnter
-        ExplicitLeft = 1040
         ExplicitHeight = 25
       end
       object lblLinkPortfolio: TWebLabel
@@ -122,7 +116,6 @@ object Frame_Header: TFrame_Header
         OnClick = lblLinkPortfolioClick
         OnMouseLeave = LinkMouseLeave
         OnMouseEnter = LinkMouseEnter
-        ExplicitLeft = 844
         ExplicitHeight = 25
       end
       object lblLinkAbout: TWebLabel
@@ -150,7 +143,6 @@ object Frame_Header: TFrame_Header
         OnClick = lblLinkAboutClick
         OnMouseLeave = LinkMouseLeave
         OnMouseEnter = LinkMouseEnter
-        ExplicitLeft = 960
         ExplicitHeight = 25
       end
       object btnMenu: TWebButton
@@ -178,7 +170,6 @@ object Frame_Header: TFrame_Header
         OnClick = btnMenuClick
         OnMouseEnter = ButtonMouseEnter
         OnMouseLeave = ButtonMouseLeave
-        ExplicitLeft = 1142
       end
     end
     object layMobileLinkPortfolio: TWebPanel
@@ -195,9 +186,6 @@ object Frame_Header: TFrame_Header
       Padding.Right = 20
       Padding.Bottom = 20
       ShowCaption = False
-      ExplicitLeft = 20
-      ExplicitTop = 103
-      ExplicitWidth = 1291
       object WebLabel1: TWebLabel
         AlignWithMargins = True
         Left = 20
@@ -240,9 +228,6 @@ object Frame_Header: TFrame_Header
       Padding.Right = 20
       Padding.Bottom = 20
       ShowCaption = False
-      ExplicitLeft = 20
-      ExplicitTop = 223
-      ExplicitWidth = 1291
       object WebLabel3: TWebLabel
         AlignWithMargins = True
         Left = 20
@@ -285,9 +270,6 @@ object Frame_Header: TFrame_Header
       Padding.Right = 20
       Padding.Bottom = 20
       ShowCaption = False
-      ExplicitLeft = 20
-      ExplicitTop = 163
-      ExplicitWidth = 1291
       object WebLabel2: TWebLabel
         AlignWithMargins = True
         Left = 20

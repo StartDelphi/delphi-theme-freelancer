@@ -77,7 +77,7 @@ end;
 procedure TFrame_Header.btnMenuClick(Sender: TObject);
 begin
   if (Self.Height = layHeader.Height) then
-    Self.Height := layHeader.Height + layMobileLinkPortfolio.Height + layMobileLinkAbout.Height + layMobileLinkContact.Height
+    Self.Height := layHeader.Height + layMobileLinkPortfolio.Height + layMobileLinkAbout.Height + layMobileLinkContact.Height + (layMobileLinkPortfolio.Height div 3)
   else
     Self.Height := layHeader.Height;
 end;

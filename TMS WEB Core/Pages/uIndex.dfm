@@ -127,10 +127,10 @@ object frmHome: TfrmHome
                 ' (FMX), VCL and TMS WEB Core. There is also an optional binaries' +
                 ' download for FMX (Windows EXE, Android APK), VCL (Windows EXE),' +
                 ' TMS WEB Core (HTML, CSS, JavaScript)'
-              Font.Charset = DEFAULT_CHARSET
+              Font.Charset = ANSI_CHARSET
               Font.Color = clWhite
               Font.Height = -23
-              Font.Name = 'Segoe UI'
+              Font.Name = 'Segoe UI Semibold'
               Font.Style = [fsBold]
               HeightStyle = ssAuto
               HeightPercent = 100.000000000000000000
@@ -167,10 +167,10 @@ object frmHome: TfrmHome
                 'icon in the dividers, change the colors, and add your email addr' +
                 'ess to the contact form to make it fully functional! Everything ' +
                 'is customizable!'
-              Font.Charset = DEFAULT_CHARSET
+              Font.Charset = ANSI_CHARSET
               Font.Color = clWhite
               Font.Height = -23
-              Font.Name = 'Segoe UI'
+              Font.Name = 'Segoe UI Semibold'
               Font.Style = [fsBold]
               HeightStyle = ssAuto
               HeightPercent = 100.000000000000000000
@@ -178,7 +178,7 @@ object frmHome: TfrmHome
               ParentFont = False
               WordWrap = True
               WidthPercent = 100.000000000000000000
-              ExplicitWidth = 677
+              ExplicitWidth = 699
             end
           end
         end
@@ -943,7 +943,6 @@ object frmHome: TfrmHome
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitTop = 380
           ExplicitWidth = 412
         end
         object imgLogo: TWebImageControl
@@ -988,7 +987,6 @@ object frmHome: TfrmHome
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitTop = 542
           ExplicitWidth = 474
         end
         object CustomHr1Container: TWebPanel
@@ -1001,7 +999,6 @@ object frmHome: TfrmHome
           ChildOrder = 3
           Color = 10271770
           ShowCaption = False
-          ExplicitTop = 482
           object CustomHr1: TWebPanel
             Left = 549
             Top = 0
@@ -1111,7 +1108,7 @@ object frmHome: TfrmHome
               inherited WebLabel11: TWebLabel
                 Width = 452
               end
-              inherited WebLabel1: TWebLabel
+              inherited lblLocation: TWebLabel
                 Width = 452
               end
             end
@@ -1123,27 +1120,8 @@ object frmHome: TfrmHome
               inherited lblSiteName: TWebLabel
                 Width = 462
               end
-              inherited laySocials: TWebPanel
+              inherited layFooterLinks: TWebPanel
                 Width = 462
-                ExplicitWidth = 462
-                inherited FooterLinkGitHub: TWebHTMLContainer
-                  HTML.Strings = (
-                    
-                      '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100' +
-                      '%" fill="white" class="bi bi-github" viewBox="0 0 16 16">'
-                    
-                      '  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.0' +
-                      '7.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94' +
-                      '-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58' +
-                      ' 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3' +
-                      '.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 ' +
-                      '0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53' +
-                      '-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.' +
-                      '15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.9' +
-                      '3-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8' +
-                      '-8-8"/>'
-                    '</svg>')
-                end
               end
             end
             inherited WebPanel1: TWebPanel
@@ -1400,36 +1378,65 @@ object frmHome: TfrmHome
       inherited layHeaderContainer: TWebPanel
         Width = 1521
         Height = 83
+        ExplicitWidth = 1521
+        ExplicitHeight = 83
         inherited layHeader: TWebPanel
           Width = 1521
-          ExplicitWidth = 1481
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 1521
           inherited imgLogo: TWebImageControl
             ExplicitLeft = 17
           end
+          inherited lblSiteName: TWebLabel
+            Height = 43
+          end
           inherited lblLinkContact: TWebLabel
             Left = 1399
+            Height = 43
             ExplicitLeft = 1399
           end
           inherited lblLinkPortfolio: TWebLabel
             Left = 1203
+            Height = 43
             ExplicitLeft = 1203
           end
           inherited lblLinkAbout: TWebLabel
             Left = 1319
+            Height = 43
             ExplicitLeft = 1319
           end
           inherited btnMenu: TWebButton
             Left = 1074
+            ExplicitLeft = 1074
           end
         end
         inherited layMobileLinkPortfolio: TWebPanel
           Width = 1521
+          ExplicitLeft = 0
+          ExplicitTop = 83
+          ExplicitWidth = 1521
+          inherited WebLabel1: TWebLabel
+            Height = 20
+          end
         end
         inherited layMobileLinkContact: TWebPanel
           Width = 1521
+          ExplicitLeft = 0
+          ExplicitTop = 203
+          ExplicitWidth = 1521
+          inherited WebLabel3: TWebLabel
+            Height = 20
+          end
         end
         inherited layMobileLinkAbout: TWebPanel
           Width = 1521
+          ExplicitLeft = 0
+          ExplicitTop = 143
+          ExplicitWidth = 1521
+          inherited WebLabel2: TWebLabel
+            Height = 20
+          end
         end
       end
     end

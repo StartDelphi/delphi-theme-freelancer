@@ -21,6 +21,8 @@ uses
   WEBLib.ExtCtrls,
   WEBLib.StdCtrls,
 
+  uBootstrapIcons,
+
   uConfig;
 
 type
@@ -33,21 +35,18 @@ type
     WebLabel11: TWebLabel;
     WebPanel5: TWebPanel;
     lblSiteName: TWebLabel;
-    laySocials: TWebPanel;
-    FooterLinkGitHub: TWebHTMLContainer;
-    FooterLinkTwitter: TWebHTMLContainer;
-    FooterLinkFacebook: TWebHTMLContainer;
+    layFooterLinks: TWebPanel;
     WebPanel1: TWebPanel;
     WebLabel16: TWebLabel;
     lblSiteDescription: TWebLabel;
-    WebLabel1: TWebLabel;
+    lblLocation: TWebLabel;
     WebPanel2: TWebPanel;
     procedure WebFrameResize(Sender: TObject);
     procedure LinkMouseEnter(Sender: TObject);
     procedure LinkMouseLeave(Sender: TObject);
-    procedure FooterLinkTwitterClick(Sender: TObject);
-    procedure FooterLinkGitHubClick(Sender: TObject);
-    procedure FooterLinkFacebookClick(Sender: TObject);
+    procedure FooterLinkClick(Sender: TObject);
+    procedure FooterLinkMouseEnter(Sender: TObject);
+    procedure FooterLinkMouseLeave(Sender: TObject);
   private
     { Private declarations }
     procedure LoadConfig();
@@ -63,17 +62,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TFrame_Footer.FooterLinkFacebookClick(Sender: TObject);
-begin
-  Application.Navigate('https://facebook.com/StartDelphi',TNavigationTarget.ntBlank);
-end;
-
-procedure TFrame_Footer.FooterLinkGitHubClick(Sender: TObject);
-begin
-  Application.Navigate('https://github.com/StartDelphi',TNavigationTarget.ntBlank);
-end;
-
-procedure TFrame_Footer.FooterLinkTwitterClick(Sender: TObject);
+procedure TFrame_Footer.FooterLinkClick(Sender: TObject);
 begin
   Application.Navigate('https://twitter.com/StartDelphi',TNavigationTarget.ntBlank);
 end;
@@ -88,29 +77,69 @@ begin
   TWebLabel(Sender).Font.Style := [];
 end;
 
+procedure TFrame_Footer.FooterLinkMouseEnter(Sender: TObject);
+begin
+  TWebHTMLContainer(Sender).ElementHandle.style.setProperty('background-color','white');
+  TWebHTMLContainer(Sender).ElementHandle.querySelector('svg').setAttribute('fill','black');
+end;
+
+procedure TFrame_Footer.FooterLinkMouseLeave(Sender: TObject);
+begin
+  TWebHTMLContainer(Sender).ElementHandle.style.setProperty('background-color','transparent');
+  TWebHTMLContainer(Sender).ElementHandle.querySelector('svg').setAttribute('fill','white');
+end;
+
 procedure TFrame_Footer.LoadConfig;
 begin
   lblSiteName.Caption := AppName;
-  lblSiteDescription.Caption := AppDescription;
+  lblLocation.Caption := FooterLocation;
+  lblSiteDescription.Caption := FooterSupport;
   lblCopyright.Caption := 'Copyright © ' + AppName + ' ' + YearOf(Now).ToString;
 end;
 
 procedure TFrame_Footer.StyleControls; // Call from the Form's Create Event
-  procedure StyleSocialButtons(btn: TWebHTMLContainer);
+procedure GenerateFooterLinkButtons();
+  var
+    link: TLinkIcon;
+    btn: TWebHTMLContainer;
   begin
-    btn.ElementHandle.style.setProperty('display','inline-block');
-    btn.ElementHandle.style.setProperty('padding','13px');
-    btn.ElementHandle.style.setProperty('margin','0 5px');
-    btn.ElementHandle.style.setProperty('border','2px solid white');
-    btn.ElementHandle.style.setProperty('border-radius','50%');
+    for link in FooterLinks do
+    begin
+      btn := TWebHTMLContainer.Create(Self);
+
+      btn.Parent := layFooterLinks;
+      btn.Align := alLeft;
+      btn.Cursor := crHandPoint;
+      btn.ElementPosition := epIgnore;
+      btn.AlignWithMargins := True;
+      btn.Margins.Top := 0;
+      btn.Margins.Bottom := 0;
+      btn.Margins.Left := 3;
+      btn.Margins.Right := 3;
+      btn.ScrollStyle := ssNone;
+      btn.Width := btn.Height;
+
+      btn.Hint := link.url;
+      btn.OnClick := FooterLinkClick;
+      btn.OnMouseEnter := FooterLinkMouseEnter;
+      btn.OnMouseLeave := FooterLinkMouseLeave;
+      btn.Name := 'TestFooterLink' + link.name.Replace(' ','',[rfReplaceAll]);
+      btn.HTML.Text := GetBootstrapIcon(link.icon, '100%', 'white');
+
+      btn.ElementHandle.style.setProperty('display','inline-block');
+      btn.ElementHandle.style.setProperty('padding','13px');
+      btn.ElementHandle.style.setProperty('margin','0 5px');
+      btn.ElementHandle.style.setProperty('border','2px solid white');
+      btn.ElementHandle.style.setProperty('border-radius','50%');
+    end;
   end;
 begin
   LoadConfig;
 
-  laySocials.ElementHandle.style.setProperty('text-align','center');
-  StyleSocialButtons(FooterLinkFacebook);
-  StyleSocialButtons(FooterLinkGithub);
-  StyleSocialButtons(FooterLinkTwitter);
+  layFooterLinks.ElementHandle.style.setProperty('text-align','center');
+  GenerateFooterLinkButtons();
+
+  TJSHTMLElement(lblSiteDescription.ElementHandle.firstChild).innerHTML := lblSiteDescription.Caption; // Render HTML, but it doesn't work for some reason.
 end;
 
 procedure TFrame_Footer.WebFrameResize(Sender: TObject);
