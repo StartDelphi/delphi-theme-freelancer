@@ -13,7 +13,7 @@ uses
   tContact in 'Templates\tContact.pas' {Frame_Contact: TWebFrame} {*.html},
   tHeader in 'Templates\tHeader.pas' {Frame_Header: TWebFrame} {*.html},
   tPopUp in 'Templates\tPopUp.pas' {Template_PopUp: TWebFrame} {*.html},
-  uBootstrapIcons in 'Libraries\Delphi-Bootstrap-Icons\uBootstrapIcons.pas';
+  uBootstrapIcons in 'Libraries\uBootstrapIcons.pas';
 
 {$R *.res}
 

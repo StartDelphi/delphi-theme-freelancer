@@ -154,7 +154,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TWebFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="Libraries\Delphi-Bootstrap-Icons\uBootstrapIcons.pas"/>
+        <DCCReference Include="Libraries\uBootstrapIcons.pas"/>
         <None Include="Pages\index.html"/>
         <None Include="php\mail.php"/>
         <RcItem Include="assets\img\cabin.png">
