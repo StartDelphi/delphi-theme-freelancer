@@ -13,7 +13,8 @@ uses
   tContact in 'Templates\tContact.pas' {Frame_Contact: TWebFrame} {*.html},
   tHeader in 'Templates\tHeader.pas' {Frame_Header: TWebFrame} {*.html},
   tPopUp in 'Templates\tPopUp.pas' {Template_PopUp: TWebFrame} {*.html},
-  uBootstrapIcons in 'Libraries\uBootstrapIcons.pas';
+  uBootstrapIcons in 'Libraries\uBootstrapIcons.pas',
+  uColors in 'Libraries\uColors.pas';
 
 {$R *.res}
 
@@ -21,6 +22,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmHome, frmHome);
-  Application.CreateForm(TFrame_Footer, Frame_Footer);
   Application.Run;
 end.

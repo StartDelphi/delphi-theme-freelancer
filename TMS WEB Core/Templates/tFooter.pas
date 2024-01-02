@@ -27,20 +27,20 @@ uses
 
 type
   TFrame_Footer = class(TWebFrame)
-    layContentContainerFooter: TWebPanel;
-    WebLabel17: TWebLabel;
-    lblCopyright: TWebLabel;
+    layFooterTop: TWebPanel;
     layContentFooter: TWebGridPanel;
-    WebPanel10: TWebPanel;
+    layContentFooterLeft: TWebPanel;
     WebLabel11: TWebLabel;
-    WebPanel5: TWebPanel;
+    layContentFooterMiddle: TWebPanel;
     lblSiteName: TWebLabel;
     layFooterLinks: TWebPanel;
-    WebPanel1: TWebPanel;
+    layContentFooterRight: TWebPanel;
     WebLabel16: TWebLabel;
     lblSiteDescription: TWebLabel;
     lblLocation: TWebLabel;
-    WebPanel2: TWebPanel;
+    layFooterBottom: TWebPanel;
+    lblCopyright: TWebLabel;
+    WebLabel17: TWebLabel;
     procedure WebFrameResize(Sender: TObject);
     procedure LinkMouseEnter(Sender: TObject);
     procedure LinkMouseLeave(Sender: TObject);
@@ -91,8 +91,8 @@ end;
 
 procedure TFrame_Footer.LoadConfig;
 begin
-  lblSiteName.Caption := AppName;
-  lblLocation.Caption := FooterLocation;
+  lblSiteName.Caption := AppName.ToUpper;;
+  lblLocation.Caption := AppLocation;
   lblSiteDescription.Caption := FooterSupport;
   lblCopyright.Caption := 'Copyright © ' + AppName + ' ' + YearOf(Now).ToString;
 end;
@@ -117,7 +117,7 @@ procedure GenerateFooterLinkButtons();
       btn.Margins.Left := 3;
       btn.Margins.Right := 3;
       btn.ScrollStyle := ssNone;
-      btn.Width := btn.Height;
+      btn.Width := layFooterLinks.Height;
 
       btn.Hint := link.url;
       btn.OnClick := FooterLinkClick;
@@ -135,6 +135,14 @@ procedure GenerateFooterLinkButtons();
   end;
 begin
   LoadConfig;
+
+  layFooterTop.Color := PrimaryColor;
+  layContentFooter.Color := PrimaryColor;
+  layContentFooterLeft.Color := PrimaryColor;
+  layContentFooterMiddle.Color := PrimaryColor;
+  layContentFooterRight.Color := PrimaryColor;
+  layFooterLinks.Color := PrimaryColor;
+  layFooterBottom.Color := Cardinal(RGB(GetRValue(PrimaryColor) div 2, GetGValue(PrimaryColor) div 2, GetBValue(PrimaryColor) div 2));
 
   layFooterLinks.ElementHandle.style.setProperty('text-align','center');
   GenerateFooterLinkButtons();

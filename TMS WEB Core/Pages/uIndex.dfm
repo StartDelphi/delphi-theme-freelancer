@@ -202,7 +202,7 @@ object frmHome: TfrmHome
             ChildOrder = 3
             Color = 10271770
             ShowCaption = False
-            object WebPanel7: TWebPanel
+            object CustomHr3Right: TWebPanel
               AlignWithMargins = True
               Left = 228
               Top = 18
@@ -217,7 +217,7 @@ object frmHome: TfrmHome
               Color = clWhite
               ShowCaption = False
             end
-            object WebPanel8: TWebPanel
+            object CustomHr3Left: TWebPanel
               AlignWithMargins = True
               Left = 0
               Top = 18
@@ -233,7 +233,7 @@ object frmHome: TfrmHome
               Color = clWhite
               ShowCaption = False
             end
-            object WebHTMLContainer2: TWebHTMLContainer
+            object CustomHr3Star: TWebHTMLContainer
               AlignWithMargins = True
               Left = 178
               Top = 0
@@ -348,7 +348,7 @@ object frmHome: TfrmHome
             ChildOrder = 3
             Color = clWhite
             ShowCaption = False
-            object WebPanel3: TWebPanel
+            object CustomHr2Right: TWebPanel
               AlignWithMargins = True
               Left = 228
               Top = 18
@@ -363,7 +363,7 @@ object frmHome: TfrmHome
               Color = 5258796
               ShowCaption = False
             end
-            object WebPanel4: TWebPanel
+            object CustomHr2Left: TWebPanel
               AlignWithMargins = True
               Left = 0
               Top = 18
@@ -379,7 +379,7 @@ object frmHome: TfrmHome
               Color = 5258796
               ShowCaption = False
             end
-            object WebHTMLContainer1: TWebHTMLContainer
+            object CustomHr2Star: TWebHTMLContainer
               AlignWithMargins = True
               Left = 178
               Top = 0
@@ -1008,7 +1008,7 @@ object frmHome: TfrmHome
             ChildOrder = 3
             Color = 10271770
             ShowCaption = False
-            object WebPanel9: TWebPanel
+            object CustomHr1Right: TWebPanel
               AlignWithMargins = True
               Left = 228
               Top = 18
@@ -1023,7 +1023,7 @@ object frmHome: TfrmHome
               Color = clWhite
               ShowCaption = False
             end
-            object WebPanel10: TWebPanel
+            object CustomHr1Left: TWebPanel
               AlignWithMargins = True
               Left = 0
               Top = 18
@@ -1039,7 +1039,7 @@ object frmHome: TfrmHome
               Color = clWhite
               ShowCaption = False
             end
-            object FooterLinkFacebook: TWebHTMLContainer
+            object CustomHr1Star: TWebHTMLContainer
               AlignWithMargins = True
               Left = 178
               Top = 0
@@ -1068,88 +1068,6 @@ object frmHome: TfrmHome
           end
         end
       end
-      inline Frame_Footer1: TFrame_Footer
-        Left = 0
-        Top = 3168
-        Width = 1521
-        Height = 360
-        Align = alTop
-        Color = 3089690
-        ParentBackground = False
-        ParentColor = False
-        TabOrder = 3
-        ExplicitTop = 3168
-        ExplicitWidth = 1521
-        inherited layContentContainerFooter: TWebPanel
-          Width = 1521
-          ExplicitWidth = 1521
-          inherited layContentFooter: TWebGridPanel
-            Width = 1441
-            ControlCollection = <
-              item
-                Column = 0
-                Row = 0
-                Control = Frame_Footer1.WebPanel10
-              end
-              item
-                Column = 0
-                Row = 0
-                Control = Frame_Footer1.WebPanel5
-              end
-              item
-                Column = 0
-                Row = 0
-                Control = Frame_Footer1.WebPanel1
-              end>
-            ExplicitWidth = 1441
-            inherited WebPanel10: TWebPanel
-              Width = 472
-              ExplicitWidth = 472
-              inherited WebLabel11: TWebLabel
-                Width = 452
-              end
-              inherited lblLocation: TWebLabel
-                Width = 452
-              end
-            end
-            inherited WebPanel5: TWebPanel
-              Left = 478
-              Width = 472
-              ExplicitLeft = 478
-              ExplicitWidth = 472
-              inherited lblSiteName: TWebLabel
-                Width = 462
-              end
-              inherited layFooterLinks: TWebPanel
-                Width = 462
-              end
-            end
-            inherited WebPanel1: TWebPanel
-              Left = 954
-              Width = 472
-              ExplicitLeft = 954
-              ExplicitWidth = 472
-              inherited WebLabel16: TWebLabel
-                Width = 452
-              end
-              inherited lblSiteDescription: TWebLabel
-                Width = 452
-                ExplicitWidth = 446
-              end
-            end
-          end
-        end
-        inherited WebPanel2: TWebPanel
-          Width = 1521
-          ExplicitWidth = 1521
-          inherited lblCopyright: TWebLabel
-            Width = 1521
-          end
-          inherited WebLabel17: TWebLabel
-            Width = 1521
-          end
-        end
-      end
       object layContentContact: TWebPanel
         Left = 0
         Top = 2361
@@ -1161,7 +1079,7 @@ object frmHome: TfrmHome
         ChildOrder = 7
         Color = clWhite
         ShowCaption = False
-        object WebLabel4: TWebLabel
+        object lblContactMe: TWebLabel
           AlignWithMargins = True
           Left = 0
           Top = 40
@@ -1206,7 +1124,7 @@ object frmHome: TfrmHome
             ChildOrder = 3
             Color = clWhite
             ShowCaption = False
-            object WebPanel1: TWebPanel
+            object CustomHr4Right: TWebPanel
               AlignWithMargins = True
               Left = 228
               Top = 18
@@ -1221,7 +1139,7 @@ object frmHome: TfrmHome
               Color = 5258796
               ShowCaption = False
             end
-            object WebPanel2: TWebPanel
+            object CustomHr4Left: TWebPanel
               AlignWithMargins = True
               Left = 0
               Top = 18
@@ -1237,7 +1155,7 @@ object frmHome: TfrmHome
               Color = 5258796
               ShowCaption = False
             end
-            object WebHTMLContainer3: TWebHTMLContainer
+            object CustomHr4Star: TWebHTMLContainer
               AlignWithMargins = True
               Left = 178
               Top = 0
@@ -1365,6 +1283,86 @@ object frmHome: TfrmHome
           end
         end
       end
+      inline Frame_Footer: TFrame_Footer
+        Left = 0
+        Top = 3168
+        Width = 1521
+        Height = 360
+        Align = alTop
+        TabOrder = 4
+        ExplicitTop = 3168
+        ExplicitWidth = 1521
+        inherited layFooterTop: TWebPanel
+          Width = 1521
+          ExplicitWidth = 1521
+          inherited layContentFooter: TWebGridPanel
+            Width = 1441
+            ControlCollection = <
+              item
+                Column = 0
+                Row = 0
+                Control = Frame_Footer.layContentFooterLeft
+              end
+              item
+                Column = 0
+                Row = 0
+                Control = Frame_Footer.layContentFooterMiddle
+              end
+              item
+                Column = 0
+                Row = 0
+                Control = Frame_Footer.layContentFooterRight
+              end>
+            ExplicitWidth = 1441
+            inherited layContentFooterLeft: TWebPanel
+              Width = 472
+              ExplicitWidth = 472
+              inherited WebLabel11: TWebLabel
+                Width = 452
+              end
+              inherited lblLocation: TWebLabel
+                Width = 452
+              end
+            end
+            inherited layContentFooterMiddle: TWebPanel
+              Left = 478
+              Width = 472
+              ExplicitLeft = 478
+              ExplicitWidth = 472
+              inherited lblSiteName: TWebLabel
+                Width = 462
+              end
+              inherited layFooterLinks: TWebPanel
+                Width = 462
+                ExplicitWidth = 462
+              end
+            end
+            inherited layContentFooterRight: TWebPanel
+              Left = 954
+              Width = 472
+              ExplicitLeft = 954
+              ExplicitWidth = 472
+              inherited WebLabel16: TWebLabel
+                Width = 452
+              end
+              inherited lblSiteDescription: TWebLabel
+                Width = 452
+                ExplicitWidth = 446
+              end
+            end
+          end
+        end
+        inherited layFooterBottom: TWebPanel
+          Width = 1521
+          ExplicitWidth = 1521
+          inherited lblCopyright: TWebLabel
+            Width = 1521
+          end
+          inherited WebLabel17: TWebLabel
+            Width = 1521
+          end
+        end
+      end
     end
     inline Frame_Header: TFrame_Header
       Left = 0
@@ -1382,28 +1380,20 @@ object frmHome: TfrmHome
         ExplicitHeight = 83
         inherited layHeader: TWebPanel
           Width = 1521
-          ExplicitLeft = 0
-          ExplicitTop = 0
           ExplicitWidth = 1521
           inherited imgLogo: TWebImageControl
             ExplicitLeft = 17
           end
-          inherited lblSiteName: TWebLabel
-            Height = 43
-          end
           inherited lblLinkContact: TWebLabel
             Left = 1399
-            Height = 43
             ExplicitLeft = 1399
           end
           inherited lblLinkPortfolio: TWebLabel
             Left = 1203
-            Height = 43
             ExplicitLeft = 1203
           end
           inherited lblLinkAbout: TWebLabel
             Left = 1319
-            Height = 43
             ExplicitLeft = 1319
           end
           inherited btnMenu: TWebButton
@@ -1413,30 +1403,15 @@ object frmHome: TfrmHome
         end
         inherited layMobileLinkPortfolio: TWebPanel
           Width = 1521
-          ExplicitLeft = 0
-          ExplicitTop = 83
           ExplicitWidth = 1521
-          inherited WebLabel1: TWebLabel
-            Height = 20
-          end
         end
         inherited layMobileLinkContact: TWebPanel
           Width = 1521
-          ExplicitLeft = 0
-          ExplicitTop = 203
           ExplicitWidth = 1521
-          inherited WebLabel3: TWebLabel
-            Height = 20
-          end
         end
         inherited layMobileLinkAbout: TWebPanel
           Width = 1521
-          ExplicitLeft = 0
-          ExplicitTop = 143
           ExplicitWidth = 1521
-          inherited WebLabel2: TWebLabel
-            Height = 20
-          end
         end
       end
     end

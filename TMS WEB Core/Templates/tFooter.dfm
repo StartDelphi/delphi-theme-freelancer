@@ -3,12 +3,9 @@ object Frame_Footer: TFrame_Footer
   Top = 0
   Width = 1331
   Height = 360
-  Color = 3089690
-  ParentBackground = False
-  ParentColor = False
   TabOrder = 0
   OnResize = WebFrameResize
-  object layContentContainerFooter: TWebPanel
+  object layFooterTop: TWebPanel
     Left = 0
     Top = 0
     Width = 1331
@@ -44,17 +41,17 @@ object Frame_Footer: TFrame_Footer
         item
           Column = 0
           Row = 0
-          Control = WebPanel10
+          Control = layContentFooterLeft
         end
         item
           Column = 0
           Row = 0
-          Control = WebPanel5
+          Control = layContentFooterMiddle
         end
         item
           Column = 0
           Row = 0
-          Control = WebPanel1
+          Control = layContentFooterRight
         end>
       Color = 5258796
       GridLineColor = clBlack
@@ -62,7 +59,7 @@ object Frame_Footer: TFrame_Footer
         item
           Value = 100
         end>
-      object WebPanel10: TWebPanel
+      object layContentFooterLeft: TWebPanel
         Left = 2
         Top = 2
         Width = 409
@@ -112,7 +109,7 @@ object Frame_Footer: TFrame_Footer
           Margins.Bottom = 5
           Align = alTop
           Alignment = taCenter
-          Caption = 'Internet'
+          Caption = 'Location'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
           Font.Height = -19
@@ -124,10 +121,10 @@ object Frame_Footer: TFrame_Footer
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitWidth = 66
+          ExplicitWidth = 72
         end
       end
-      object WebPanel5: TWebPanel
+      object layContentFooterMiddle: TWebPanel
         Left = 415
         Top = 2
         Width = 409
@@ -181,7 +178,7 @@ object Frame_Footer: TFrame_Footer
           ShowCaption = False
         end
       end
-      object WebPanel1: TWebPanel
+      object layContentFooterRight: TWebPanel
         Left = 828
         Top = 2
         Width = 409
@@ -250,7 +247,7 @@ object Frame_Footer: TFrame_Footer
       end
     end
   end
-  object WebPanel2: TWebPanel
+  object layFooterBottom: TWebPanel
     Left = 0
     Top = 265
     Width = 1331
@@ -258,7 +255,7 @@ object Frame_Footer: TFrame_Footer
     Align = alTop
     BorderStyle = bsNone
     ChildOrder = 1
-    Color = 3089690
+    Color = 2629398
     object lblCopyright: TWebLabel
       AlignWithMargins = True
       Left = 0

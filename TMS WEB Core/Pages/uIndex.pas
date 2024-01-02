@@ -19,6 +19,9 @@ uses
   WEBLib.WebCtrls,
   Vcl.Forms,
 
+  uColors,
+  uBootstrapIcons,
+
   tHeader,
   tContact,
   tFooter,
@@ -42,24 +45,23 @@ type
     lblJobTitles: TWebLabel;
     CustomHr1Container: TWebPanel;
     CustomHr1: TWebPanel;
-    WebPanel9: TWebPanel;
-    WebPanel10: TWebPanel;
-    FooterLinkFacebook: TWebHTMLContainer;
+    CustomHr1Right: TWebPanel;
+    CustomHr1Left: TWebPanel;
+    CustomHr1Star: TWebHTMLContainer;
     lblPortfolio: TWebLabel;
     CustomHr2Container: TWebPanel;
     CustomHr2: TWebPanel;
-    WebPanel3: TWebPanel;
-    WebPanel4: TWebPanel;
-    WebHTMLContainer1: TWebHTMLContainer;
+    CustomHr2Right: TWebPanel;
+    CustomHr2Left: TWebPanel;
+    CustomHr2Star: TWebHTMLContainer;
     WebLabel2: TWebLabel;
     CustomHr3Container: TWebPanel;
     CustomHr3: TWebPanel;
-    WebPanel7: TWebPanel;
-    WebPanel8: TWebPanel;
-    WebHTMLContainer2: TWebHTMLContainer;
+    CustomHr3Right: TWebPanel;
+    CustomHr3Left: TWebPanel;
+    CustomHr3Star: TWebHTMLContainer;
     WebLabel3: TWebLabel;
     btnFreeDownload: TWebButton;
-    Frame_Footer1: TFrame_Footer;
     layPortfolio1: TWebPanel;
     layPortfolio2: TWebPanel;
     imgPortfolio2: TWebImageControl;
@@ -70,10 +72,10 @@ type
     layContentContact: TWebPanel;
     CustomHr4Container: TWebPanel;
     CustomHr4: TWebPanel;
-    WebPanel1: TWebPanel;
-    WebPanel2: TWebPanel;
-    WebHTMLContainer3: TWebHTMLContainer;
-    WebLabel4: TWebLabel;
+    CustomHr4Right: TWebPanel;
+    CustomHr4Left: TWebPanel;
+    CustomHr4Star: TWebHTMLContainer;
+    lblContactMe: TWebLabel;
     Frame_Contact: TFrame_Contact;
     layContainer: TWebPanel;
     Frame_Header: TFrame_Header;
@@ -94,6 +96,7 @@ type
     imgPortfolio4: TWebImageControl;
     imgPortfolio5: TWebImageControl;
     imgPortfolio6: TWebImageControl;
+    Frame_Footer: TFrame_Footer;
     procedure WebFormCreate(Sender: TObject);
     procedure WebFormResize(Sender: TObject);
     procedure FilterButtonsMouseEnter(Sender: TObject);
@@ -130,7 +133,7 @@ end;
 
 procedure TfrmHome.btnFreeDownloadMouseLeave(Sender: TObject);
 begin
-  TWebButton(Sender).Color := $009CBC1A;
+  TWebButton(Sender).Color := SecondaryColor;
   TWebButton(Sender).Font.Color := clWhite;
   TWebButton(Sender).ElementHandle.style.setProperty('border','2px solid white');
 end;
@@ -237,8 +240,46 @@ begin
 end;
 
 procedure TfrmHome.WebFormCreate(Sender: TObject);
+var
+  I: UInt64;
 begin
   document.title := AppDescription + ' - ' + AppName;
+
+  // Hero Section
+  imgLogo.URL := AppLogo;
+  layContentHeading.Color := SecondaryColor;
+  lblSiteName.Caption := AppName.ToUpper;
+  lblJobTitles.Caption := '';
+  for I := 0 to Length(AppTags) - 1 do
+  begin
+    if I > 0 then
+      lblJobTitles.Caption := lblJobTitles.Caption + ' - ';
+    lblJobTitles.Caption := lblJobTitles.Caption + AppTags[I];
+  end;
+
+
+
+  // Custom Horizontal Rule
+  CustomHr1Star.HTML.Text := GetBootstrapIcon('star-fill', '100%', 'white');
+  CustomHr1Container.Color := SecondaryColor;
+  CustomHr1.Color := SecondaryColor;
+  CustomHr1Left.Color := clWhite;
+  CustomHr1Right.Color := clWhite;
+  CustomHr2Star.HTML.Text := GetBootstrapIcon('star-fill', '100%', '#'+TColorToHex(PrimaryColor));
+  CustomHr2Container.Color := clWhite;
+  CustomHr2.Color := clWhite;
+  CustomHr2Left.Color := PrimaryColor;
+  CustomHr2Right.Color := PrimaryColor;
+  CustomHr3Star.HTML.Text := GetBootstrapIcon('star-fill', '100%', 'white');
+  CustomHr3Container.Color := SecondaryColor;
+  CustomHr3.Color := SecondaryColor;
+  CustomHr3Left.Color := clWhite;
+  CustomHr3Right.Color := clWhite;
+  CustomHr4Star.HTML.Text := GetBootstrapIcon('star-fill', '100%', '#'+TColorToHex(PrimaryColor));
+  CustomHr4Container.Color := clWhite;
+  CustomHr4.Color := clWhite;
+  CustomHr4Left.Color := PrimaryColor;
+  CustomHr4Right.Color := PrimaryColor;
 
   // Header & Footer
   Frame_Header.StyleControls;
@@ -246,18 +287,25 @@ begin
   Frame_Footer.StyleControls;
 
   // Portfolio
+  lblPortfolio.Font.Color := PrimaryColor;
   layPortfolioImage1.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage1.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage1.Color := SecondaryColor;
   layPortfolioImage2.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage2.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage2.Color := SecondaryColor;
   layPortfolioImage3.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage3.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage3.Color := SecondaryColor;
   layPortfolioImage4.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage4.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage4.Color := SecondaryColor;
   layPortfolioImage5.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage5.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage5.Color := SecondaryColor;
   layPortfolioImage6.ElementHandle.style.setProperty('border','1px solid white');
   layPortfolioImage6.ElementHandle.style.setProperty('border-radius','10px');
+  layPortfolioImage6.Color := SecondaryColor;
   imgPortfolioIcon1.ElementHandle.style.setProperty('pointer-events','none');
   imgPortfolioIcon2.ElementHandle.style.setProperty('pointer-events','none');
   imgPortfolioIcon3.ElementHandle.style.setProperty('pointer-events','none');
@@ -266,8 +314,16 @@ begin
   imgPortfolioIcon6.ElementHandle.style.setProperty('pointer-events','none');
 
   // About
+  layContentContainerIntro.Color := SecondaryColor;
+  layContentIntro.Color := SecondaryColor;
+  layContentIntroLeft.Color := SecondaryColor;
+  layContentIntroRight.Color := SecondaryColor;
+  btnFreeDownload.Color := SecondaryColor;
   btnFreeDownload.ElementHandle.style.setProperty('border-radius','10px');
   btnFreeDownload.ElementHandle.style.setProperty('border','2px solid white');
+
+  // Contact Me
+  lblContactMe.Font.Color := PrimaryColor;
 
 
   RenderLabelCaptionsHTML;

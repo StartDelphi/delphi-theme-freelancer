@@ -66,7 +66,7 @@ implementation
 
 procedure TFrame_Header.LinkMouseEnter(Sender: TObject);
 begin
-  TWebLabel(Sender).Font.Color := $009CBC1A;
+  TWebLabel(Sender).Font.Color := SecondaryColor;
 end;
 
 procedure TFrame_Header.LinkMouseLeave(Sender: TObject);
@@ -84,12 +84,12 @@ end;
 
 procedure TFrame_Header.ButtonMouseEnter(Sender: TObject);
 begin
-  TWebButton(Sender).Color := $0085A016;
+  TWebButton(Sender).Color := Cardinal(RGB(GetRValue(PrimaryColor) div 2, GetGValue(PrimaryColor) div 2, GetBValue(PrimaryColor) div 2));
 end;
 
 procedure TFrame_Header.ButtonMouseLeave(Sender: TObject);
 begin
-  TWebButton(Sender).Color := $009CBC1A;
+  TWebButton(Sender).Color := SecondaryColor;
 end;
 
 procedure TFrame_Header.lblLinkAboutClick(Sender: TObject);
@@ -126,6 +126,13 @@ procedure TFrame_Header.StyleControls; // Call from the Form's Create Event
 begin
   LoadConfig;
 
+  layHeaderContainer.Color := PrimaryColor;
+  layHeader.Color := PrimaryColor;
+  layMobileLinkAbout.Color := PrimaryColor;
+  layMobileLinkContact.Color := PrimaryColor;
+  layMobileLinkPortfolio.Color := PrimaryColor;
+
+  btnMenu.Color := SecondaryColor;
   btnMenu.ElementHandle.style.setProperty('border-radius','10px');
   btnMenu.ElementHandle.style.setProperty('border','1px solid #b21f24');
 end;

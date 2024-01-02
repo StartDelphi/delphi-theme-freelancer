@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, JS, Web, WEBLib.Graphics, WEBLib.Controls,
   WEBLib.Forms, WEBLib.Dialogs, Vcl.Controls, WEBLib.ExtCtrls,
 
-  uConfig, Vcl.StdCtrls, WEBLib.StdCtrls, WEBLib.REST;
+  uColors, uConfig, Vcl.StdCtrls, WEBLib.StdCtrls, WEBLib.REST;
 
 type
   TFrame_Contact = class(TWebFrame)
@@ -67,12 +67,12 @@ end;
 
 procedure TFrame_Contact.ButtonMouseEnter(Sender: TObject);
 begin
-  TWebButton(Sender).Color := $0085A016;
+  TWebButton(Sender).Color := Cardinal(RGB(GetRValue(SecondaryColor) div 2, GetGValue(SecondaryColor) div 2, GetBValue(SecondaryColor) div 2));
 end;
 
 procedure TFrame_Contact.ButtonMouseLeave(Sender: TObject);
 begin
-  TWebButton(Sender).Color := $009CBC1A;
+  TWebButton(Sender).Color := SecondaryColor;
 end;
 
 procedure TFrame_Contact.WebFrameResize(Sender: TObject);
@@ -97,7 +97,7 @@ procedure TFrame_Contact.btnSendClick(Sender: TObject);
 begin
   console.log('Send Button Pressed');
 
-  SendEmail(SiteEmail,edtEmailAddress.Text,'','Contact Form - ' + AppName, edtMessage.Text);
+  SendEmail(AppEmail,edtEmailAddress.Text,'','Contact Form - ' + AppName, edtMessage.Text);
 end;
 
 procedure TFrame_Contact.LoadConfig;
@@ -112,6 +112,7 @@ begin
 
   btnSend.ElementHandle.style.setProperty('border-radius','10px');
   btnSend.ElementHandle.style.setProperty('border','1px solid #1ABC9C');
+  btnSend.Color := SecondaryColor;
 
   WebFrameResize(Frame_Contact);
 end;

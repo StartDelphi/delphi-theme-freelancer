@@ -13,11 +13,11 @@ const
   AppName: String = 'Start Delphi';
   AppLogo: String = 'assets/logo.svg';
   AppDescription: String = 'Freelance is a free to use, MIT licensed Delphi theme created by Start Delphi.';
+  AppEmail: String = 'Info@StartDelphi.com';
+  AppLocation: String = 'Bloemfontein, Free-State, South Africa';
 
-  SiteEmail: String = 'Info@StartDelphi.com';
+  AppTags: TArray<string> = ['Graphic Artist', 'Web Designer', 'Illustrator'];
 
-  // Footer
-  FooterLocation: String = 'Bloemfontein, Free-State, South Africa';
   FooterLinks: array[1..3] of TLinkIcon = (
     (
       name: 'GitHub';
@@ -38,6 +38,10 @@ const
   FooterSupport: String = 'Freelance is a free to use, MIT licensed Delphi theme created by Start Delphi.';
 
   ContainerWidth: UInt64 = 1400;
+
+  // Colors:
+  PrimaryColor: Cardinal = $00503E2C;
+  SecondaryColor: Cardinal = $009CBC1A;
 
 implementation
 
