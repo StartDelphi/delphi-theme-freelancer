@@ -38,7 +38,7 @@ type
     layContentIntroLeft: TWebPanel;
     lblContentTitleIntro: TWebLabel;
     layContentIntroRight: TWebPanel;
-    layPortfolio: TWebGridPanel;
+    gridPortfolio: TWebGridPanel;
     layContentHeading: TWebPanel;
     imgLogo: TWebImageControl;
     lblSiteName: TWebLabel;
@@ -66,9 +66,6 @@ type
     layPortfolio2: TWebPanel;
     imgPortfolio2: TWebImageControl;
     layPortfolio3: TWebPanel;
-    layPortfolio4: TWebPanel;
-    layPortfolio5: TWebPanel;
-    layPortfolio6: TWebPanel;
     layContentContact: TWebPanel;
     CustomHr4Container: TWebPanel;
     CustomHr4: TWebPanel;
@@ -86,16 +83,7 @@ type
     imgPortfolioIcon2: TWebHTMLContainer;
     layPortfolioImage3: TWebPanel;
     imgPortfolioIcon3: TWebHTMLContainer;
-    layPortfolioImage4: TWebPanel;
-    imgPortfolioIcon4: TWebHTMLContainer;
-    layPortfolioImage5: TWebPanel;
-    imgPortfolioIcon5: TWebHTMLContainer;
-    layPortfolioImage6: TWebPanel;
-    imgPortfolioIcon6: TWebHTMLContainer;
     imgPortfolio3: TWebImageControl;
-    imgPortfolio4: TWebImageControl;
-    imgPortfolio5: TWebImageControl;
-    imgPortfolio6: TWebImageControl;
     Frame_Footer: TFrame_Footer;
     procedure WebFormCreate(Sender: TObject);
     procedure WebFormResize(Sender: TObject);
@@ -110,6 +98,7 @@ type
     procedure PortfolioClick(Sender: TObject);
     procedure btnFreeDownloadMouseEnter(Sender: TObject);
     procedure btnFreeDownloadMouseLeave(Sender: TObject);
+    procedure PortfolioImageLoaded(Sender: TObject);
   private
     { Private declarations }
     procedure RenderLabelCaptionsHTML();
@@ -208,6 +197,23 @@ begin
 //  TJSHTMLElement(lblContentDescriptionIntro.ElementHandle.firstChild).innerHTML := lblContentDescriptionIntro.Caption;
 end;
 
+procedure TfrmHome.PortfolioImageLoaded(Sender: TObject);
+var
+  Icon: TWebHTMLContainer;
+  Image: TWebImageControl;
+begin
+  if (Sender is TWebImageControl) then
+  begin
+    Image := TWebImageControl(Sender);
+    Icon := TWebHTMLContainer(FindComponent(String(TWebImageControl(Sender).Name).replace('imgPortfolio','imgPortfolioIcon',[])));
+
+    Icon.Left := (Icon.Parent.Width - Icon.Width) div 2;
+    Icon.Top := (Icon.Parent.Height - Icon.Height) div 2;
+
+    gridPortfolio.Height := (Image.Height + Image.Parent.Margins.Top + Image.Parent.Margins.Bottom) * gridPortfolio.RowCollection.Count;
+  end;
+end;
+
 procedure TfrmHome.PortfolioImageMouseEnter(Sender: TObject);
 var
   Icon: TWebHTMLContainer;
@@ -240,6 +246,93 @@ begin
 end;
 
 procedure TfrmHome.WebFormCreate(Sender: TObject);
+  procedure GeneratePortfolio();
+  var
+    I: Int64;
+    GridControl: TWinControl;
+    layPortfolio, layPortfolioImage: TWebPanel;
+    imgPortfolio: TWebImageControl;
+    imgPortfolioIcon: TWebHTMLContainer;
+  begin
+    gridPortfolio.RowCollection.Clear;
+    gridPortfolio.ColumnCollection.Clear;
+    if (frmHome.Width >= 1000) then
+    begin
+      gridPortfolio.ColumnCollection.Add;
+      gridPortfolio.ColumnCollection.Add;
+      gridPortfolio.ColumnCollection.Add;
+    end else
+    begin
+      if (Self.Width >= 700) then
+      begin
+        gridPortfolio.ColumnCollection.Add;
+        gridPortfolio.ColumnCollection.Add;
+      end else
+      begin
+        gridPortfolio.ColumnCollection.Add;
+      end;
+    end;
+
+
+    for I := gridPortfolio.ControlCollection.Count-1 downto 0 do
+    begin
+      GridControl := gridPortfolio.ControlCollection.Items[I].Control as TWinControl;
+      gridPortfolio.RemoveControl(GridControl);
+      FreeAndNil(GridControl);
+    end;
+
+    for I := 1 to Length(Portfolio) do
+    begin
+      layPortfolio := TWebPanel.Create(Self);
+      layPortfolio.Name := 'layPortfolio' + I.ToString;
+      layPortfolio.Parent := gridPortfolio;
+      layPortfolio.Align := TAlign.alClient;
+      layPortfolio.BorderStyle := bsNone;
+      layPortfolio.ShowCaption := False;
+      layPortfolio.Color := gridPortfolio.Color;
+
+      layPortfolioImage := TWebPanel.Create(Self);
+      layPortfolioImage.Name := 'layPortfolioImage' + I.ToString;
+      layPortfolioImage.Parent := layPortfolio;
+      layPortfolioImage.Align := TAlign.alClient;
+      layPortfolioImage.AlignWithMargins := True;
+      layPortfolioImage.Margins.Left := 20;
+      layPortfolioImage.Margins.Top := 20;
+      layPortfolioImage.Margins.Right := 20;
+      layPortfolioImage.Margins.Bottom := 20;
+      layPortfolioImage.ElementHandle.style.setProperty('border','1px solid white');
+      layPortfolioImage.ElementHandle.style.setProperty('border-radius','10px');
+      layPortfolioImage.Color := SecondaryColor;
+
+      imgPortfolio := TWebImageControl.Create(Self);
+      imgPortfolio.Name := 'imgPortfolio' + I.ToString;
+      imgPortfolio.Parent := layPortfolioImage;
+      imgPortfolio.Align := TAlign.alTop;
+      imgPortfolio.Cursor := crHandPoint;
+      imgPortfolio.URL := Portfolio[I].thumbnail;
+      imgPortfolio.Hint := Portfolio[I].name;
+      imgPortfolio.HeightStyle := ssAuto;
+      imgPortfolio.OnMouseEnter := PortfolioImageMouseEnter;
+      imgPortfolio.OnMouseLeave := PortfolioImageMouseLeave;
+      imgPortfolio.OnClick := PortfolioClick;
+      imgPortfolio.OnLoaded := PortfolioImageLoaded;
+
+      imgPortfolioIcon := TWebHTMLContainer.Create(Self);
+      imgPortfolioIcon.Name := 'imgPortfolioIcon' + I.ToString;
+      imgPortfolioIcon.Parent := layPortfolioImage;
+      imgPortfolioIcon.Height := 65;
+      imgPortfolioIcon.Width := 65;
+      imgPortfolioIcon.Cursor := crHandPoint;
+      imgPortfolioIcon.ScrollStyle := ssNone;
+      imgPortfolioIcon.HTML.Text := GetBootstrapIcon('plus-lg', '100%', 'white');
+      imgPortfolioIcon.Left := (imgPortfolioIcon.Parent.Width - imgPortfolioIcon.Width) div 2;
+      imgPortfolioIcon.Top := (imgPortfolioIcon.Parent.Height - imgPortfolioIcon.Height) div 2;
+      imgPortfolioIcon.Visible := False;
+      imgPortfolioIcon.ElementHandle.style.setProperty('pointer-events','none');
+
+      console.log(gridPortfolio.ControlCount);
+    end;
+  end;
 var
   I: UInt64;
 begin
@@ -256,8 +349,6 @@ begin
       lblJobTitles.Caption := lblJobTitles.Caption + ' - ';
     lblJobTitles.Caption := lblJobTitles.Caption + AppTags[I];
   end;
-
-
 
   // Custom Horizontal Rule
   CustomHr1Star.HTML.Text := GetBootstrapIcon('star-fill', '100%', 'white');
@@ -287,31 +378,8 @@ begin
   Frame_Footer.StyleControls;
 
   // Portfolio
+  GeneratePortfolio;
   lblPortfolio.Font.Color := PrimaryColor;
-  layPortfolioImage1.ElementHandle.style.setProperty('border','1px solid white');
-  layPortfolioImage1.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage1.Color := SecondaryColor;
-  layPortfolioImage2.ElementHandle.style.setProperty('border','1px solid white');
-  layPortfolioImage2.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage2.Color := SecondaryColor;
-  layPortfolioImage3.ElementHandle.style.setProperty('border','1px solid white');
-  layPortfolioImage3.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage3.Color := SecondaryColor;
-  layPortfolioImage4.ElementHandle.style.setProperty('border','1px solid white');
-  layPortfolioImage4.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage4.Color := SecondaryColor;
-  layPortfolioImage5.ElementHandle.style.setProperty('border','1px solid white');
-  layPortfolioImage5.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage5.Color := SecondaryColor;
-  layPortfolioImage6.ElementHandle.style.setProperty('border','1px solid white');
-  layPortfolioImage6.ElementHandle.style.setProperty('border-radius','10px');
-  layPortfolioImage6.Color := SecondaryColor;
-  imgPortfolioIcon1.ElementHandle.style.setProperty('pointer-events','none');
-  imgPortfolioIcon2.ElementHandle.style.setProperty('pointer-events','none');
-  imgPortfolioIcon3.ElementHandle.style.setProperty('pointer-events','none');
-  imgPortfolioIcon4.ElementHandle.style.setProperty('pointer-events','none');
-  imgPortfolioIcon5.ElementHandle.style.setProperty('pointer-events','none');
-  imgPortfolioIcon6.ElementHandle.style.setProperty('pointer-events','none');
 
   // About
   layContentContainerIntro.Color := SecondaryColor;
@@ -330,34 +398,26 @@ begin
 end;
 
 procedure TfrmHome.WebFormResize(Sender: TObject);
+var
+  I: Int64;
 begin
   imgLogo.Margins.Left := (imgLogo.Parent.Width - 285) div 2;
   imgLogo.Margins.Right := (imgLogo.Parent.Width - 285) div 2;
-
-//  console.log('==========');
-//  console.log(layPortfolio.ColumnCollection.Count);
-//  console.log(layPortfolio.RowCollection.Count);
-//  layPortfolio.RowCollection.Clear;
-//  console.log('Row Clear');
-//  layPortfolio.ColumnCollection.Clear;
-//  console.log('Column Clear');
-//  console.log(layPortfolio.ColumnCollection.Count);
-//  console.log(layPortfolio.RowCollection.Count);
 
   if (frmHome.Width >= ContainerWidth) then
   begin
     layContentIntro.Margins.Left := (layContentIntro.Parent.Width - ContainerWidth) div 2;
     layContentIntro.Margins.Right := (layContentIntro.Parent.Width - ContainerWidth) div 2;
 
-    layPortfolio.Margins.Left := (layPortfolio.Parent.Width - ContainerWidth) div 2;
-    layPortfolio.Margins.Right := (layPortfolio.Parent.Width - ContainerWidth) div 2;
+    gridPortfolio.Margins.Left := (gridPortfolio.Parent.Width - ContainerWidth) div 2;
+    gridPortfolio.Margins.Right := (gridPortfolio.Parent.Width - ContainerWidth) div 2;
   end else
   begin
     layContentIntro.Margins.Left := 40;
     layContentIntro.Margins.Right := 40;
 
-    layPortfolio.Margins.Left := 40;
-    layPortfolio.Margins.Right := 40;
+    gridPortfolio.Margins.Left := 40;
+    gridPortfolio.Margins.Right := 40;
   end;
 
   layContentHeading.Height := imgLogo.Height + imgLogo.Margins.Top + imgLogo.Margins.Bottom +
@@ -366,16 +426,12 @@ begin
                               lblJobTitles.Height + lblJobTitles.Margins.Top + lblJobTitles.Margins.Bottom;
 
 
-//  layContentContainerIntro.Height := lblContentTitleIntro.Height + lblContentTitleIntro.Margins.Top + lblContentTitleIntro.Margins.Bottom +
-//                                     lblContentDescriptionIntro.Height + lblContentDescriptionIntro.Margins.Top + lblContentDescriptionIntro.Margins.Bottom +
-//                                     layBrowseTemplatesAndThemes.Height + layBrowseTemplatesAndThemes.Margins.Top + layBrowseTemplatesAndThemes.Margins.Bottom;
-
-  layPortfolio.Height := (imgPortfolio1.Height + layPortfolioImage1.Margins.Top + layPortfolioImage1.Margins.Bottom) * 2;
+  for I := 1 to Length(Portfolio) do
+    PortfolioImageLoaded(TWebImageControl(FindComponent('imgPortfolio' + I.ToString)));
 
   layContentContainerPortfolio.Height := lblPortfolio.Height + lblPortfolio.Margins.Top + lblPortfolio.Margins.Bottom +
                                          CustomHr2Container.Height + CustomHr2Container.Margins.Top + CustomHr2Container.Margins.Bottom +
-                                         layPortfolio.Height + layPortfolio.Margins.Top + layPortfolio.Margins.Bottom;
-
+                                         gridPortfolio.Height + gridPortfolio.Margins.Top + gridPortfolio.Margins.Bottom;
 
   CustomHr1.Left := (CustomHr1.Parent.Width - CustomHr1.Width) div 2;
   CustomHr2.Left := (CustomHr2.Parent.Width - CustomHr2.Width) div 2;
@@ -385,22 +441,6 @@ begin
 
   btnFreeDownload.Margins.Left := (imgLogo.Parent.Width - 200) div 2;
   btnFreeDownload.Margins.Right := (imgLogo.Parent.Width - 200) div 2;
-
-  imgPortfolioIcon1.Left := (imgPortfolioIcon1.Parent.Width - imgPortfolioIcon1.Width) div 2;
-  imgPortfolioIcon1.Top := (imgPortfolioIcon1.Parent.Height - imgPortfolioIcon1.Height) div 2;
-  imgPortfolioIcon2.Left := (imgPortfolioIcon2.Parent.Width - imgPortfolioIcon2.Width) div 2;
-  imgPortfolioIcon2.Top := (imgPortfolioIcon2.Parent.Height - imgPortfolioIcon2.Height) div 2;
-  imgPortfolioIcon3.Left := (imgPortfolioIcon3.Parent.Width - imgPortfolioIcon3.Width) div 2;
-  imgPortfolioIcon3.Top := (imgPortfolioIcon3.Parent.Height - imgPortfolioIcon3.Height) div 2;
-  imgPortfolioIcon4.Left := (imgPortfolioIcon4.Parent.Width - imgPortfolioIcon4.Width) div 2;
-  imgPortfolioIcon4.Top := (imgPortfolioIcon4.Parent.Height - imgPortfolioIcon4.Height) div 2;
-  imgPortfolioIcon5.Left := (imgPortfolioIcon5.Parent.Width - imgPortfolioIcon5.Width) div 2;
-  imgPortfolioIcon5.Top := (imgPortfolioIcon5.Parent.Height - imgPortfolioIcon5.Height) div 2;
-  imgPortfolioIcon6.Left := (imgPortfolioIcon6.Parent.Width - imgPortfolioIcon6.Width) div 2;
-  imgPortfolioIcon6.Top := (imgPortfolioIcon6.Parent.Height - imgPortfolioIcon6.Height) div 2;
-
-
-
   asm
     window.dispatchEvent(new Event('resize'));
   end;
