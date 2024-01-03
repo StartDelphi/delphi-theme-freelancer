@@ -5,6 +5,7 @@ interface
 uses
   System.SysUtils,
   System.Classes,
+  System.Math,
 
   JS,
   Web,
@@ -201,6 +202,7 @@ procedure TfrmHome.PortfolioImageLoaded(Sender: TObject);
 var
   Icon: TWebHTMLContainer;
   Image: TWebImageControl;
+  I: Int64;
 begin
   if (Sender is TWebImageControl) then
   begin
@@ -211,6 +213,28 @@ begin
     Icon.Top := (Icon.Parent.Height - Icon.Height) div 2;
 
     gridPortfolio.Height := (Image.Height + Image.Parent.Margins.Top + Image.Parent.Margins.Bottom) * gridPortfolio.RowCollection.Count;
+
+
+    gridPortfolio.RowCollection.Clear;
+    gridPortfolio.ColumnCollection.Clear;
+    if (frmHome.Width >= 1000) then
+    begin
+      gridPortfolio.ColumnCollection.Add;
+      gridPortfolio.ColumnCollection.Add;
+      gridPortfolio.ColumnCollection.Add;
+    end else
+    begin
+      if (Self.Width >= 700) then
+      begin
+        gridPortfolio.ColumnCollection.Add;
+        gridPortfolio.ColumnCollection.Add;
+      end else
+      begin
+        gridPortfolio.ColumnCollection.Add;
+      end;
+    end;
+    for I := 1 to Ceil(Length(Portfolio) / gridPortfolio.ColumnCollection.Count) do
+      gridPortfolio.RowCollection.Add;
   end;
 end;
 
@@ -256,23 +280,7 @@ procedure TfrmHome.WebFormCreate(Sender: TObject);
   begin
     gridPortfolio.RowCollection.Clear;
     gridPortfolio.ColumnCollection.Clear;
-    if (frmHome.Width >= 1000) then
-    begin
-      gridPortfolio.ColumnCollection.Add;
-      gridPortfolio.ColumnCollection.Add;
-      gridPortfolio.ColumnCollection.Add;
-    end else
-    begin
-      if (Self.Width >= 700) then
-      begin
-        gridPortfolio.ColumnCollection.Add;
-        gridPortfolio.ColumnCollection.Add;
-      end else
-      begin
-        gridPortfolio.ColumnCollection.Add;
-      end;
-    end;
-
+    gridPortfolio.ColumnCollection.Add;
 
     for I := gridPortfolio.ControlCollection.Count-1 downto 0 do
     begin
@@ -329,8 +337,6 @@ procedure TfrmHome.WebFormCreate(Sender: TObject);
       imgPortfolioIcon.Top := (imgPortfolioIcon.Parent.Height - imgPortfolioIcon.Height) div 2;
       imgPortfolioIcon.Visible := False;
       imgPortfolioIcon.ElementHandle.style.setProperty('pointer-events','none');
-
-      console.log(gridPortfolio.ControlCount);
     end;
   end;
 var
