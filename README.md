@@ -14,7 +14,7 @@ _Note: This Theme is still in active development and not fully complete_
 
 | Platform      | Availability            | Minimum Version            |
 | ------------- | ----------------------- | -------------------------- |
-| TMS WEB Core  | Available               | Embarcadero Delphi 11.3 <br> TMS WEB CORE v2.4   |
+| TMS WEB Core  | Available               | Embarcadero Delphi 11.3 <br> TMS WEB Core v2.4.1   |
 | FireMonkey    | *Coming soon!*          | N/A                        |
 | VCL           | *Coming soon!*          | N/A                        |
 | Lazarus       | *Coming soon!*          | N/A                        |
@@ -36,4 +36,4 @@ Start Delphi is an open source library of free Delphi themes and templates. All 
 
 ## Copyright and License
 
-Copyright 2023 Start Delphi. Code released under the [MIT License](https://github.com/StartDelphi/startdelphi-theme-freelancer/blob/main/LICENSE).
+Copyright 2024 Start Delphi. Code released under the [MIT License](https://github.com/StartDelphi/startdelphi-theme-freelancer/blob/main/LICENSE).
