@@ -19,7 +19,13 @@ _Note: This Theme is still in active development and not fully complete_
 | VCL           | *Coming soon!*          | N/A                        |
 | Lazarus       | *Coming soon!*          | N/A                        |
 
+## Usage
 
+### Basic Usage
+After downloading, simply open the project file (`.DPROJ`) in Delphi and edit the `uConfig.pas` file to modify the content.
+
+### Advanced Usage
+Open the `.DFM`/`.PAS` files and have full control to modify everything and anything.
 
 
 
