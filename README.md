@@ -1,4 +1,4 @@
-# [Start Bootstrap - Freelancer](https://startbootstrap.com/theme/freelancer/)
+# [Start Delphi - Freelancer](https://startbootstrap.com/theme/freelancer/)
 
 [Freelancer](https://freelancer.startdelphi.com/) is a one page, freelancer portfolio theme built with [Delphi](https://www.embarcadero.com/products/Delphi) created by [Start Delphi](https://startdelphi.com/). This theme features several content sections, a responsive portfolio grid, modal windows for each portfolio item, and a working PHP based contact form.
 
