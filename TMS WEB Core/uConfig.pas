@@ -70,6 +70,11 @@ const
     )
   );
 
+  AboutTextLeft: String = 'Freelancer is a free Delphi theme created by Start Delphi. The download includes the complete Delphi source files for FireMonkey (FMX), VCL and TMS WEB Core. There is also an optional binaries download for FMX (Windows EXE, Android APK), VCL (Windows EXE), TMS WEB Core (HTML, CSS, JavaScript)';
+  AboutTextRight: String = 'You can add your own custom avatar for the masthead, change the icon in the dividers, change the colors, and add your email address to the contact form to make it fully functional! Everything is customizable!';
+  AboutButtonText: String = 'Free Download';
+  AboutButtonURL: String = 'https://github.com/StartDelphi/startdelphi-theme-freelancer';
+
   FooterLinks: array[1..3] of TLinkIcon = (
     (
       name: 'GitHub';

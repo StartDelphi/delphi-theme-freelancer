@@ -37,7 +37,7 @@ type
     layContentContainerPortfolio: TWebPanel;
     layContentIntro: TWebGridPanel;
     layContentIntroLeft: TWebPanel;
-    lblContentTitleIntro: TWebLabel;
+    lblAboutContentLeft: TWebLabel;
     layContentIntroRight: TWebPanel;
     gridPortfolio: TWebGridPanel;
     layContentHeading: TWebPanel;
@@ -61,8 +61,8 @@ type
     CustomHr3Right: TWebPanel;
     CustomHr3Left: TWebPanel;
     CustomHr3Star: TWebHTMLContainer;
-    WebLabel3: TWebLabel;
-    btnFreeDownload: TWebButton;
+    lblAboutContentRight: TWebLabel;
+    btnAboutButton: TWebButton;
     layPortfolio1: TWebPanel;
     layPortfolio2: TWebPanel;
     imgPortfolio2: TWebImageControl;
@@ -97,9 +97,10 @@ type
     procedure ButtonMouseLeave(Sender: TObject);
     procedure imgLogoLoaded(Sender: TObject);
     procedure PortfolioClick(Sender: TObject);
-    procedure btnFreeDownloadMouseEnter(Sender: TObject);
-    procedure btnFreeDownloadMouseLeave(Sender: TObject);
+    procedure btnAboutButtonMouseEnter(Sender: TObject);
+    procedure btnAboutButtonMouseLeave(Sender: TObject);
     procedure PortfolioImageLoaded(Sender: TObject);
+    procedure btnAboutButtonClick(Sender: TObject);
   private
     { Private declarations }
     procedure RenderLabelCaptionsHTML();
@@ -114,14 +115,19 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmHome.btnFreeDownloadMouseEnter(Sender: TObject);
+procedure TfrmHome.btnAboutButtonClick(Sender: TObject);
+begin
+  Application.Navigate(AboutButtonURL,TNavigationTarget.ntBlank);
+end;
+
+procedure TfrmHome.btnAboutButtonMouseEnter(Sender: TObject);
 begin
   TWebButton(Sender).Color := clWhite;
   TWebButton(Sender).Font.Color := clBlack;
   TWebButton(Sender).ElementHandle.style.setProperty('border','2px solid white');
 end;
 
-procedure TfrmHome.btnFreeDownloadMouseLeave(Sender: TObject);
+procedure TfrmHome.btnAboutButtonMouseLeave(Sender: TObject);
 begin
   TWebButton(Sender).Color := SecondaryColor;
   TWebButton(Sender).Font.Color := clWhite;
@@ -194,8 +200,8 @@ end;
 
 procedure TfrmHome.RenderLabelCaptionsHTML;
 begin
-  TJSHTMLElement(lblContentTitleIntro.ElementHandle.firstChild).innerHTML := lblContentTitleIntro.Caption;
-//  TJSHTMLElement(lblContentDescriptionIntro.ElementHandle.firstChild).innerHTML := lblContentDescriptionIntro.Caption;
+  TJSHTMLElement(lblAboutContentLeft.ElementHandle.firstChild).innerHTML := lblAboutContentLeft.Caption;
+  TJSHTMLElement(lblAboutContentRight.ElementHandle.firstChild).innerHTML := lblAboutContentRight.Caption;
 end;
 
 procedure TfrmHome.PortfolioImageLoaded(Sender: TObject);
@@ -392,9 +398,10 @@ begin
   layContentIntro.Color := SecondaryColor;
   layContentIntroLeft.Color := SecondaryColor;
   layContentIntroRight.Color := SecondaryColor;
-  btnFreeDownload.Color := SecondaryColor;
-  btnFreeDownload.ElementHandle.style.setProperty('border-radius','10px');
-  btnFreeDownload.ElementHandle.style.setProperty('border','2px solid white');
+  btnAboutButton.Color := SecondaryColor;
+  btnAboutButton.ElementHandle.style.setProperty('border-radius','10px');
+  btnAboutButton.ElementHandle.style.setProperty('border','2px solid white');
+  btnAboutButton.Caption := AboutButtonText;
 
   // Contact Me
   lblContactMe.Font.Color := PrimaryColor;
@@ -445,8 +452,8 @@ begin
   CustomHr4.Left := (CustomHr4.Parent.Width - CustomHr4.Width) div 2;
 
 
-  btnFreeDownload.Margins.Left := (imgLogo.Parent.Width - 200) div 2;
-  btnFreeDownload.Margins.Right := (imgLogo.Parent.Width - 200) div 2;
+  btnAboutButton.Margins.Left := (imgLogo.Parent.Width - 200) div 2;
+  btnAboutButton.Margins.Right := (imgLogo.Parent.Width - 200) div 2;
   asm
     window.dispatchEvent(new Event('resize'));
   end;

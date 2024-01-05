@@ -33,7 +33,6 @@ object frmHome: TfrmHome
         BorderStyle = bsNone
         Color = 10271770
         ShowCaption = False
-        ExplicitTop = 1785
         object WebLabel2: TWebLabel
           AlignWithMargins = True
           Left = 0
@@ -111,7 +110,7 @@ object frmHome: TfrmHome
             Font.Style = []
             ParentFont = False
             ShowCaption = False
-            object lblContentTitleIntro: TWebLabel
+            object lblAboutContentLeft: TWebLabel
               AlignWithMargins = True
               Left = 0
               Top = 0
@@ -152,7 +151,7 @@ object frmHome: TfrmHome
             ChildOrder = 1
             Color = 10271770
             ShowCaption = False
-            object WebLabel3: TWebLabel
+            object lblAboutContentRight: TWebLabel
               AlignWithMargins = True
               Left = 10
               Top = 0
@@ -262,7 +261,7 @@ object frmHome: TfrmHome
             end
           end
         end
-        object btnFreeDownload: TWebButton
+        object btnAboutButton: TWebButton
           AlignWithMargins = True
           Left = 40
           Top = 471
@@ -284,8 +283,9 @@ object frmHome: TfrmHome
           HeightPercent = 100.000000000000000000
           ParentFont = False
           WidthPercent = 100.000000000000000000
-          OnMouseEnter = btnFreeDownloadMouseEnter
-          OnMouseLeave = btnFreeDownloadMouseLeave
+          OnClick = btnAboutButtonClick
+          OnMouseEnter = btnAboutButtonMouseEnter
+          OnMouseLeave = btnAboutButtonMouseLeave
         end
       end
       object layContentContainerPortfolio: TWebPanel
@@ -452,8 +452,6 @@ object frmHome: TfrmHome
             item
               Value = 100
             end>
-          ExplicitLeft = 15
-          ExplicitTop = 552
           object layPortfolio1: TWebPanel
             Left = 2
             Top = 2
@@ -478,7 +476,6 @@ object frmHome: TfrmHome
               ChildOrder = 1
               Color = 10271770
               ShowCaption = False
-              ExplicitHeight = 304
               object imgPortfolio1: TWebImageControl
                 Left = 0
                 Top = 0
@@ -551,7 +548,6 @@ object frmHome: TfrmHome
               ChildOrder = 1
               Color = 10271770
               ShowCaption = False
-              ExplicitHeight = 304
               object imgPortfolio2: TWebImageControl
                 Left = 0
                 Top = 0
@@ -623,7 +619,6 @@ object frmHome: TfrmHome
               ChildOrder = 1
               Color = 10271770
               ShowCaption = False
-              ExplicitHeight = 304
               object imgPortfolio3: TWebImageControl
                 Left = 0
                 Top = 0
@@ -846,7 +841,6 @@ object frmHome: TfrmHome
         ChildOrder = 7
         Color = clWhite
         ShowCaption = False
-        ExplicitTop = 2361
         object lblContactMe: TWebLabel
           AlignWithMargins = True
           Left = 0
@@ -1058,7 +1052,7 @@ object frmHome: TfrmHome
         Height = 360
         Align = alTop
         TabOrder = 4
-        ExplicitTop = 3168
+        ExplicitTop = 2648
         ExplicitWidth = 1521
         inherited layFooterTop: TWebPanel
           Width = 1521
