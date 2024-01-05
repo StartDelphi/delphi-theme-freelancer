@@ -4,9 +4,11 @@ interface
 
 uses
   System.SysUtils,
-  Vcl.Graphics;
+  Vcl.Graphics,
+  WEBLib.Graphics;
 
 function TColorToHex(aColor: TColor): String;
+function MakeColorDarker(aColor: TColor): TColor;
 
 implementation
 
@@ -18,6 +20,11 @@ begin
   Result := Byte(RGB).ToHexString +
             Byte(RGB shr 8).ToHexString +
             Byte(RGB shr 16).ToHexString;
+end;
+
+function MakeColorDarker(aColor: TColor): TColor;
+begin
+  Result := RGB(GetRValue(aColor) div 2, GetGValue(aColor) div 2, GetBValue(aColor) div 2);
 end;
 
 end.

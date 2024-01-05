@@ -9,7 +9,7 @@ uses
   WEBLib.Forms,
   uIndex in 'Pages\uIndex.pas' {frmHome: TWebForm} {*.html},
   uConfig in 'uConfig.pas',
-  tFooter in 'Templates\tFooter.pas' {Frame_Footer: TWebFrame},
+  tFooter in 'Templates\tFooter.pas' {Frame_Footer: TWebFrame} {*.html},
   tContact in 'Templates\tContact.pas' {Frame_Contact: TWebFrame} {*.html},
   tHeader in 'Templates\tHeader.pas' {Frame_Header: TWebFrame} {*.html},
   tPopUp in 'Templates\tPopUp.pas' {Template_PopUp: TWebFrame} {*.html},

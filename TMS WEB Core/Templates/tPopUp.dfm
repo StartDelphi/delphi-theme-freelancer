@@ -18,10 +18,6 @@ object Template_PopUp: TTemplate_PopUp
     ChildOrder = 1
     ScrollBars = ssVertical
     OnClick = btnCloseClick
-    ExplicitLeft = 648
-    ExplicitTop = 416
-    ExplicitWidth = 150
-    ExplicitHeight = 60
     object layPopUpContainer: TWebPanel
       AlignWithMargins = True
       Left = 40
@@ -39,7 +35,6 @@ object Template_PopUp: TTemplate_PopUp
       Padding.Right = 20
       Padding.Bottom = 20
       ShowCaption = False
-      ExplicitHeight = 818
       object layPopUp: TWebPanel
         AlignWithMargins = True
         Left = 20
@@ -55,7 +50,6 @@ object Template_PopUp: TTemplate_PopUp
         ChildOrder = 6
         Color = clWhite
         ShowCaption = False
-        ExplicitHeight = 726
         object lblDescription: TWebLabel
           AlignWithMargins = True
           Left = 0
@@ -144,7 +138,7 @@ object Template_PopUp: TTemplate_PopUp
             ChildOrder = 3
             Color = clWhite
             ShowCaption = False
-            object WebPanel3: TWebPanel
+            object CustomHrRight: TWebPanel
               AlignWithMargins = True
               Left = 228
               Top = 18
@@ -159,7 +153,7 @@ object Template_PopUp: TTemplate_PopUp
               Color = 5258796
               ShowCaption = False
             end
-            object WebPanel4: TWebPanel
+            object CustomHrLeft: TWebPanel
               AlignWithMargins = True
               Left = 0
               Top = 18
@@ -175,7 +169,7 @@ object Template_PopUp: TTemplate_PopUp
               Color = 5258796
               ShowCaption = False
             end
-            object WebHTMLContainer1: TWebHTMLContainer
+            object CustomHrStar: TWebHTMLContainer
               AlignWithMargins = True
               Left = 178
               Top = 0
@@ -226,6 +220,8 @@ object Template_PopUp: TTemplate_PopUp
           ParentFont = False
           WidthPercent = 100.000000000000000000
           OnClick = btnCloseClick
+          OnMouseEnter = ButtonMouseEnter
+          OnMouseLeave = ButtonMouseLeave
         end
       end
       object layClose: TWebPanel

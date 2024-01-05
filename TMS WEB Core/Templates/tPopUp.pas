@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Classes, JS, Web, WEBLib.Graphics, WEBLib.Controls,
   WEBLib.Forms, WEBLib.Dialogs, Vcl.Controls, WEBLib.ExtCtrls, Vcl.StdCtrls, WEBLib.StdCtrls,
-  uConfig;
+  uConfig, uColors, uBootstrapIcons;
 
 type
   TTemplate_PopUp = class(TWebFrame)
@@ -17,14 +17,16 @@ type
     imgThumbnail: TWebImageControl;
     CustomHrContainer: TWebPanel;
     CustomHr: TWebPanel;
-    WebPanel3: TWebPanel;
-    WebPanel4: TWebPanel;
-    WebHTMLContainer1: TWebHTMLContainer;
+    CustomHrRight: TWebPanel;
+    CustomHrLeft: TWebPanel;
+    CustomHrStar: TWebHTMLContainer;
     btnCloseWindow: TWebButton;
     layClose: TWebPanel;
     btnClose: TWebHTMLContainer;
     procedure WebFrameResize(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure ButtonMouseEnter(Sender: TObject);
+    procedure ButtonMouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,6 +42,17 @@ implementation
 
 {$R *.dfm}
 
+procedure TTemplate_PopUp.ButtonMouseEnter(Sender: TObject);
+begin
+  TWebButton(Sender).Color := MakeColorDarker(SecondaryColor);
+  TWebButton(Sender).ElementHandle.style.setProperty('border','none');
+end;
+
+procedure TTemplate_PopUp.ButtonMouseLeave(Sender: TObject);
+begin
+  TWebButton(Sender).Color := SecondaryColor;
+  TWebButton(Sender).ElementHandle.style.setProperty('border','none');
+end;
 
 procedure TTemplate_PopUp.btnCloseClick(Sender: TObject);
 begin
@@ -61,11 +74,18 @@ begin
   Self.ElementHandle.style.setProperty('background-color','rgba(0, 0, 0, 0.5)');
   layTemplatePopUp.ElementHandle.style.setProperty('background-color','rgba(0, 0, 0, 0.5)');
 
+  btnCloseWindow.Color := SecondaryColor;
   btnCloseWindow.ElementHandle.style.setProperty('border-radius','10px');
-  btnCloseWindow.ElementHandle.style.setProperty('border','1px solid #1ABC9C');
+  btnCloseWindow.ElementHandle.style.setProperty('border','none');
 
   imgThumbnail.ElementHandle.style.setProperty('border','1px solid white');
   imgThumbnail.ElementHandle.style.setProperty('border-radius','10px');
+
+  CustomHrStar.HTML.Text := GetBootstrapIcon('star-fill', '100%', '#' + TColorToHex(PrimaryColor));
+  CustomHrContainer.Color := clWhite;
+  CustomHr.Color := clWhite;
+  CustomHrLeft.Color := PrimaryColor;
+  CustomHrRight.Color := PrimaryColor;
 
   WebFrameResize(Template_PopUp);
 end;

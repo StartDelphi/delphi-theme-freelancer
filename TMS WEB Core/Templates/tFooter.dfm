@@ -75,7 +75,7 @@ object Frame_Footer: TFrame_Footer
           AlignWithMargins = True
           Left = 10
           Top = 0
-          Width = 389
+          Width = 111
           Height = 31
           Margins.Left = 0
           Margins.Top = 0
@@ -95,13 +95,12 @@ object Frame_Footer: TFrame_Footer
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitWidth = 111
         end
         object lblLocation: TWebLabel
           AlignWithMargins = True
           Left = 10
           Top = 51
-          Width = 389
+          Width = 72
           Height = 25
           Margins.Left = 0
           Margins.Top = 0
@@ -121,7 +120,6 @@ object Frame_Footer: TFrame_Footer
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitWidth = 72
         end
       end
       object layContentFooterMiddle: TWebPanel
@@ -139,7 +137,7 @@ object Frame_Footer: TFrame_Footer
           AlignWithMargins = True
           Left = 0
           Top = 0
-          Width = 399
+          Width = 158
           Height = 38
           Margins.Left = 0
           Margins.Top = 0
@@ -159,7 +157,6 @@ object Frame_Footer: TFrame_Footer
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitWidth = 158
         end
         object layFooterLinks: TWebPanel
           AlignWithMargins = True
@@ -194,7 +191,7 @@ object Frame_Footer: TFrame_Footer
           AlignWithMargins = True
           Left = 10
           Top = 0
-          Width = 389
+          Width = 103
           Height = 31
           Margins.Left = 0
           Margins.Top = 0
@@ -214,13 +211,12 @@ object Frame_Footer: TFrame_Footer
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitWidth = 103
         end
         object lblSiteDescription: TWebLabel
           AlignWithMargins = True
           Left = 10
           Top = 51
-          Width = 389
+          Width = 388
           Height = 100
           Margins.Left = 0
           Margins.Top = 0
@@ -242,7 +238,6 @@ object Frame_Footer: TFrame_Footer
           ParentFont = False
           WordWrap = True
           WidthPercent = 100.000000000000000000
-          ExplicitWidth = 388
         end
       end
     end
@@ -260,7 +255,7 @@ object Frame_Footer: TFrame_Footer
       AlignWithMargins = True
       Left = 0
       Top = 20
-      Width = 1331
+      Width = 253
       Height = 25
       Margins.Left = 0
       Margins.Top = 20
@@ -280,13 +275,12 @@ object Frame_Footer: TFrame_Footer
       ParentFont = False
       WordWrap = True
       WidthPercent = 100.000000000000000000
-      ExplicitWidth = 253
     end
     object WebLabel17: TWebLabel
       AlignWithMargins = True
       Left = 0
       Top = 50
-      Width = 1331
+      Width = 241
       Height = 21
       Margins.Left = 0
       Margins.Top = 0
@@ -306,7 +300,6 @@ object Frame_Footer: TFrame_Footer
       ParentFont = False
       WordWrap = True
       WidthPercent = 100.000000000000000000
-      ExplicitWidth = 241
     end
   end
 end

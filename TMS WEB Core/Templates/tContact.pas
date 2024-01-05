@@ -67,12 +67,14 @@ end;
 
 procedure TFrame_Contact.ButtonMouseEnter(Sender: TObject);
 begin
-  TWebButton(Sender).Color := Cardinal(RGB(GetRValue(SecondaryColor) div 2, GetGValue(SecondaryColor) div 2, GetBValue(SecondaryColor) div 2));
+  TWebButton(Sender).Color := MakeColorDarker(SecondaryColor);
+  TWebButton(Sender).ElementHandle.style.setProperty('border','none');
 end;
 
 procedure TFrame_Contact.ButtonMouseLeave(Sender: TObject);
 begin
   TWebButton(Sender).Color := SecondaryColor;
+  TWebButton(Sender).ElementHandle.style.setProperty('border','none');
 end;
 
 procedure TFrame_Contact.WebFrameResize(Sender: TObject);
@@ -110,9 +112,9 @@ procedure TFrame_Contact.StyleControls; // Call from the Form's Create Event
 begin
   LoadConfig;
 
-  btnSend.ElementHandle.style.setProperty('border-radius','10px');
-  btnSend.ElementHandle.style.setProperty('border','1px solid #1ABC9C');
   btnSend.Color := SecondaryColor;
+  btnSend.ElementHandle.style.setProperty('border-radius','10px');
+  btnSend.ElementHandle.style.setProperty('border','none');
 
   WebFrameResize(Frame_Contact);
 end;

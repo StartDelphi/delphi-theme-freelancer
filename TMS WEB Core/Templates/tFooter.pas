@@ -23,6 +23,7 @@ uses
 
   uBootstrapIcons,
 
+  uColors,
   uConfig;
 
 type
@@ -142,7 +143,7 @@ begin
   layContentFooterMiddle.Color := PrimaryColor;
   layContentFooterRight.Color := PrimaryColor;
   layFooterLinks.Color := PrimaryColor;
-  layFooterBottom.Color := Cardinal(RGB(GetRValue(PrimaryColor) div 2, GetGValue(PrimaryColor) div 2, GetBValue(PrimaryColor) div 2));
+  layFooterBottom.Color := MakeColorDarker(PrimaryColor);
 
   layFooterLinks.ElementHandle.style.setProperty('text-align','center');
   GenerateFooterLinkButtons();

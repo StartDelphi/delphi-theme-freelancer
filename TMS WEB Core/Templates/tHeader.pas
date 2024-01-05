@@ -19,6 +19,7 @@ uses
   WEBLib.StdCtrls,
   WEBLib.ExtCtrls,
 
+  uColors,
   uConfig;
 
 type
@@ -84,12 +85,14 @@ end;
 
 procedure TFrame_Header.ButtonMouseEnter(Sender: TObject);
 begin
-  TWebButton(Sender).Color := Cardinal(RGB(GetRValue(PrimaryColor) div 2, GetGValue(PrimaryColor) div 2, GetBValue(PrimaryColor) div 2));
+  TWebButton(Sender).Color := MakeColorDarker(SecondaryColor);
+  TWebButton(Sender).ElementHandle.style.setProperty('border','none');
 end;
 
 procedure TFrame_Header.ButtonMouseLeave(Sender: TObject);
 begin
   TWebButton(Sender).Color := SecondaryColor;
+  TWebButton(Sender).ElementHandle.style.setProperty('border','none');
 end;
 
 procedure TFrame_Header.lblLinkAboutClick(Sender: TObject);
@@ -134,7 +137,7 @@ begin
 
   btnMenu.Color := SecondaryColor;
   btnMenu.ElementHandle.style.setProperty('border-radius','10px');
-  btnMenu.ElementHandle.style.setProperty('border','1px solid #b21f24');
+  btnMenu.ElementHandle.style.setProperty('border','none');
 end;
 
 procedure TFrame_Header.WebFrameResize(Sender: TObject);
