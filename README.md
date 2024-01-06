@@ -15,9 +15,6 @@ _Note: This Theme is still in active development and not fully complete_
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/StartDelphi/startdelphi-theme-freelancer/master/LICENSE)
 [![wakatime](https://wakatime.com/badge/github/StartDelphi/startdelphi-theme-freelancer.svg)](https://wakatime.com/badge/github/StartDelphi/startdelphi-theme-freelancer)
 
-![GitHub all releases](https://img.shields.io/github/downloads/ShaunRoselt/Roselt-Developer-Tools/total?label=Github%20Downloads)
-![Steam Downloads](https://img.shields.io/badge/Steam_Downloads-15K-green)
-![Microsoft Store Downloads](https://img.shields.io/badge/Microsoft_Store_Downloads-30K-green)
 
 
 
